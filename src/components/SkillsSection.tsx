@@ -70,16 +70,21 @@ const skillCategories = [
 
 export const SkillsSection = () => {
   return (
-    <section id="skills" className="py-24 bg-card/30 relative">
-      <div className="container mx-auto px-6">
+    <section id="skills" className="py-24 md:py-32 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-card/30" />
+      <div className="absolute inset-0 bg-grid-dense opacity-30" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <span className="font-mono text-primary text-sm mb-4 block">
-              &lt;compétences /&gt;
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Arsenal Technique</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <div className="section-terminal justify-center mb-4">
+              <span className="text-primary">cat skills.txt</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Arsenal Technique</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-body-lg">
               Une base solide construite par la pratique, l'expérimentation en homelab et l'apprentissage continu.
             </p>
           </div>
@@ -89,28 +94,36 @@ export const SkillsSection = () => {
             {skillCategories.map((category, index) => (
               <div
                 key={category.title}
-                className="group p-6 rounded-xl bg-background border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+                className="group relative animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <category.icon className="h-6 w-6 text-primary" />
+                {/* Hover glow */}
+                <div className="absolute inset-0 rounded-2xl bg-primary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative p-6 md:p-8 rounded-2xl bg-background border border-border group-hover:border-primary/40 transition-all duration-500 h-full">
+                  {/* Header */}
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-glow-sm transition-all duration-300">
+                      <category.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-semibold text-lg mb-1">{category.title}</h3>
+                      <p className="text-sm text-muted-foreground">{category.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">{category.title}</h3>
-                    <p className="text-sm text-muted-foreground">{category.description}</p>
-                  </div>
-                </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-secondary text-secondary-foreground border border-border"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  {/* Skills */}
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <span
+                        key={skill}
+                        className="pill-glow opacity-80 group-hover:opacity-100 transition-opacity"
+                        style={{ animationDelay: `${skillIndex * 0.05}s` }}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
