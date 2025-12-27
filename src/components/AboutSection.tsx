@@ -1,23 +1,26 @@
-import { User, Target, Lightbulb, Shield, Sparkles } from "lucide-react";
+import { User, Target, Lightbulb, Shield, Sparkles, ArrowRight } from "lucide-react";
 
 const traits = [
   {
     icon: Target,
     title: "Discipline",
     description: "J'aborde chaque projet avec structure et rigueur, en documentant mon travail et en suivant les standards professionnels.",
-    color: "primary",
+    color: "primary" as const,
+    gradient: "from-primary/20 to-cyan/20",
   },
   {
     icon: Lightbulb,
     title: "Curiosité",
     description: "Je suis animé par le désir de comprendre en profondeur comment les choses fonctionnent — pas seulement comment les utiliser.",
-    color: "accent",
+    color: "accent" as const,
+    gradient: "from-accent/20 to-purple/20",
   },
   {
     icon: Shield,
     title: "Esprit Sécurité",
-    description: "Je pense comme un attaquant pour construire comme un défenseur. La sécurité n'est pas une réflexion après coup — c'est le fondement.",
-    color: "pink",
+    description: "Je pense comme un attaquant pour construire comme un défenseur. La sécurité n'est pas une réflexion après coup.",
+    color: "pink" as const,
+    gradient: "from-pink/20 to-accent/20",
   },
 ];
 
@@ -27,44 +30,69 @@ export const AboutSection = () => {
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent" />
       <div className="absolute top-1/2 -left-48 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          {/* Section Header */}
-          <div className="mb-12 animate-fade-in-up">
-            <div className="section-terminal mb-4">
-              <span className="text-primary">whoami</span>
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header - centered like reference sites */}
+          <div className="text-center mb-16 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 mb-6">
+              <User className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium text-primary">À propos</span>
             </div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 glow-subtle">
-                <User className="h-6 w-6 text-primary" />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold">À propos</h2>
-            </div>
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              Qui suis-je<span className="text-gradient-hero">?</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Un passionné d'infrastructure IT avec un état d'esprit sécurité-first.
+            </p>
           </div>
 
-          {/* Main Bio Card */}
+          {/* Main Bio Card - Premium glassmorphism */}
           <div className="relative mb-16 animate-fade-in-up stagger-1">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 blur-xl opacity-50" />
-            <div className="relative p-8 md:p-10 rounded-2xl card-glass border border-border/50">
-              <div className="absolute top-4 right-4">
-                <Sparkles className="h-5 w-5 text-primary/50" />
+            {/* Glow effect behind card */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/20 via-accent/10 to-pink/20 blur-2xl opacity-50" />
+            
+            <div className="relative p-8 md:p-12 rounded-3xl bg-card/80 border border-border/50 backdrop-blur-xl">
+              {/* Decorative corner element */}
+              <div className="absolute top-6 right-6 flex items-center gap-2">
+                <span className="text-xs font-mono text-muted-foreground">~/whoami</span>
+                <Sparkles className="h-4 w-4 text-primary/50" />
               </div>
-              <div className="space-y-6 text-body-lg text-muted-foreground leading-relaxed">
-                <p>
-                  Je suis <span className="text-foreground font-semibold">Brandon Bienvenu</span>, un futur administrateur systèmes et passionné de cybersécurité de 16 ans, basé à <span className="text-primary">Reims, France</span>. Actuellement en BAC PRO CIEL au Lycée Georges Brière, je consacre mon temps libre et mes études à maîtriser les fondamentaux de la gestion d'infrastructures IT.
-                </p>
-                <p>
-                  Mon approche de l'apprentissage est <span className="text-foreground font-medium">pratique</span>. Je n'étudie pas seulement les systèmes — <span className="text-primary">je les construis</span>. À travers mon environnement homelab, j'ai configuré et sécurisé des serveurs Linux, déployé des services d'entreprise comme Active Directory et DHCP, et pratiqué les workflows quotidiens des administrateurs systèmes.
-                </p>
-                <p>
-                  Ce qui me distingue, ce n'est pas seulement la compétence technique — c'est un <span className="text-gradient font-semibold">état d'esprit orienté sécurité</span>. Je crois que comprendre comment les systèmes peuvent échouer ou être compromis est essentiel pour construire des infrastructures qui fonctionnent vraiment.
-                </p>
+              
+              <div className="grid md:grid-cols-[1fr,auto] gap-8 items-center">
+                <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                  <p>
+                    Je suis <span className="text-foreground font-semibold">Brandon Bienvenu</span>, un futur administrateur systèmes et passionné de cybersécurité de 16 ans, basé à <span className="text-primary font-medium">Reims, France</span>.
+                  </p>
+                  <p>
+                    Actuellement en BAC PRO CIEL au Lycée Georges Brière, je consacre mon temps libre à maîtriser les fondamentaux de la gestion d'infrastructures IT à travers mon <span className="text-foreground font-medium">environnement homelab</span>.
+                  </p>
+                  <p>
+                    Mon approche : je n'étudie pas seulement les systèmes — <span className="text-gradient font-semibold">je les construis</span>.
+                  </p>
+                </div>
+                
+                {/* Stats sidebar */}
+                <div className="hidden md:flex flex-col gap-4 pl-8 border-l border-border/50">
+                  <div className="text-center p-4 rounded-xl bg-secondary/50">
+                    <p className="text-3xl font-bold text-primary">16</p>
+                    <p className="text-xs text-muted-foreground">ans</p>
+                  </div>
+                  <div className="text-center p-4 rounded-xl bg-secondary/50">
+                    <p className="text-3xl font-bold text-accent">300+</p>
+                    <p className="text-xs text-muted-foreground">heures</p>
+                  </div>
+                  <div className="text-center p-4 rounded-xl bg-secondary/50">
+                    <p className="text-3xl font-bold text-pink">5+</p>
+                    <p className="text-xs text-muted-foreground">projets</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Trait Cards */}
+          {/* Trait Cards - Premium bento grid style */}
           <div className="grid sm:grid-cols-3 gap-6">
             {traits.map((trait, index) => (
               <div
@@ -72,40 +100,42 @@ export const AboutSection = () => {
                 className="group relative animate-fade-in-up"
                 style={{ animationDelay: `${0.2 + index * 0.1}s` }}
               >
-                {/* Glow effect on hover */}
-                <div className={`absolute inset-0 rounded-2xl ${
-                  trait.color === 'primary' ? 'bg-primary/20' :
-                  trait.color === 'accent' ? 'bg-accent/20' :
-                  'bg-pink/20'
-                } blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500`} />
+                {/* Hover glow */}
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${trait.gradient} blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
-                <div className="relative p-6 md:p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-500 h-full">
-                  {/* Icon */}
-                  <div className={`p-3 rounded-xl w-fit mb-5 ${
-                    trait.color === 'primary' ? 'bg-primary/10 group-hover:bg-primary/20' :
-                    trait.color === 'accent' ? 'bg-accent/10 group-hover:bg-accent/20' :
-                    'bg-pink/10 group-hover:bg-pink/20'
-                  } transition-colors duration-300`}>
-                    <trait.icon className={`h-6 w-6 ${
+                <div className="relative p-6 md:p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-500 h-full group-hover:-translate-y-1">
+                  {/* Icon with ring */}
+                  <div className={`relative w-14 h-14 rounded-2xl mb-6 flex items-center justify-center ${
+                    trait.color === 'primary' ? 'bg-primary/10 ring-1 ring-primary/30' :
+                    trait.color === 'accent' ? 'bg-accent/10 ring-1 ring-accent/30' :
+                    'bg-pink/10 ring-1 ring-pink/30'
+                  }`}>
+                    <trait.icon className={`h-7 w-7 ${
                       trait.color === 'primary' ? 'text-primary' :
                       trait.color === 'accent' ? 'text-accent' :
                       'text-pink'
                     }`} />
-                  </div>
-                  
-                  {/* Title with status indicator */}
-                  <div className="flex items-center gap-3 mb-3">
-                    <h3 className="font-display font-semibold text-lg">{trait.title}</h3>
-                    <span className={`w-2 h-2 rounded-full ${
+                    {/* Pulse indicator */}
+                    <span className={`absolute -top-1 -right-1 w-3 h-3 rounded-full ${
                       trait.color === 'primary' ? 'bg-primary' :
                       trait.color === 'accent' ? 'bg-accent' :
                       'bg-pink'
                     } animate-pulse`} />
                   </div>
                   
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  {/* Content */}
+                  <h3 className="font-display font-bold text-xl mb-3 group-hover:text-primary transition-colors">
+                    {trait.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                     {trait.description}
                   </p>
+                  
+                  {/* Subtle arrow indicator */}
+                  <div className="flex items-center gap-2 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span>En savoir plus</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </div>
                 </div>
               </div>
             ))}
