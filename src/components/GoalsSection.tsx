@@ -13,7 +13,7 @@ const milestones = [
     year: "2026", 
     icon: Award, 
     title: "Certifications", 
-    description: "CompTIA A+, Network+, Security+",
+    description: "Linux+, CCNA,",
     status: "upcoming" as const,
     color: "accent" as const,
   },
