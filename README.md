@@ -1,73 +1,85 @@
-# Welcome to your Lovable project
+# 🌐 Portfolio — Brandon Bienvenu  
+_Futur Administrateur Systèmes & Passionné de Cybersécurité_
 
-## Project info
+Bienvenue sur le dépôt de mon site personnel.  
+Ce portfolio présente mon parcours, mes compétences techniques, mes projets d’infrastructure, ainsi que ma vision orientée sécurité-first.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+## 🚀 À propos du projet
 
-There are several ways of editing your application.
+Ce site a été conçu pour offrir une présentation claire, moderne et professionnelle de mon travail dans l’infrastructure IT.  
+Il met en avant :
 
-**Use Lovable**
+- Mon expérience en homelab (+300 heures de pratique)
+- Mes compétences en systèmes, réseaux, virtualisation et scripting
+- Mes projets concrets (AD, pfSense, VPN IPsec, Monitoring Grafana…)
+- Ma feuille de route vers une carrière en cybersécurité
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Le site est entièrement responsive, animé, et construit avec une esthétique moderne inspirée des interfaces techniques (terminal, glow, gradients, etc.).
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🧠 Technologies utilisées
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Selon la version générée, le site utilise généralement :
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **React / Typescript**
+- **ShadCN**
+- **Vite**
+- **Javascript**
 
-Follow these steps:
+> Le code peut varier selon les générations, mais l’objectif reste un site propre, lisible et performant.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 📁 Structure du site
 
-# Step 3: Install the necessary dependencies.
-npm i
+Le portfolio est organisé en plusieurs sections :
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+- **Hero** — Présentation rapide, localisation, CTA
+- **À propos** — Mon parcours, mon état d’esprit, mes valeurs
+- **Compétences** — Arsenal technique (Systèmes, Réseau, Virtualisation, Scripting…)
+- **Projets** — Mes réalisations pratiques en homelab
+- **Objectifs** — Ma roadmap 2025 → 2030+
+- **Contact** — Liens professionnels et message d’introduction
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🛠️ Projets présentés
 
-**Use GitHub Codespaces**
+### **1. Infrastructure Homelab**  
+Infrastructure virtuelle complète simulant un environnement d’entreprise.  
+VMs Ubuntu Server, Active Directory, DNS, DHCP, services web, documentation versionnée.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### **2. Multi-Site VPN IPsec (pfSense)**  
+Interconnexion de deux sites distants via tunnel IPsec.  
+Routeurs pfSense, Windows Server, clients, routage sécurisé.
 
-## What technologies are used for this project?
+### **3. Stack Monitoring Grafana**  
+Monitoring complet avec Prometheus, Node Exporter et Grafana.  
+Dashboards personnalisés et alerting.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🔗 Liens utiles
 
-## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- **GitHub :** https://github.com/BrandonBienvenu  
+- **LinkedIn :** https://www.linkedin.com/in/brandon-bienvenu-045858348/
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 📜 Licence
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Ce projet est open-source.  
+Tu peux l’utiliser comme référence ou t’en inspirer, mais merci de créditer le dépôt si tu réutilises une partie du design ou du contenu.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+## ✨ Auteur
+
+**Brandon Bienvenu**  
+Futur administrateur systèmes • Passionné de cybersécurité  
+Reims, France — Lycée Georges Brière
+
