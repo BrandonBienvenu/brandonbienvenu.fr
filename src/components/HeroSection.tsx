@@ -11,36 +11,10 @@ const featurePills = [
   { icon: Network, label: "Réseaux" },
 ];
 
-const TypewriterHeading = () => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [showCursor, setShowCursor] = useState(true);
-  const fullText = "sécurisées";
-
-  useEffect(() => {
-    let currentIndex = 0;
-    const typingInterval = setInterval(() => {
-      if (currentIndex < fullText.length) {
-        setDisplayedText(fullText.slice(0, currentIndex + 1));
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, 100);
-
-    return () => clearInterval(typingInterval);
-  }, []);
-
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, 530);
-    return () => clearInterval(cursorInterval);
-  }, []);
-
+const AnimatedGradientName = () => {
   return (
-    <span className="text-gradient-hero">
-      {displayedText}
-      <span className={`inline-block w-[4px] h-[0.9em] bg-primary ml-1 align-middle transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`} />
+    <span className="inline-block animate-gradient-shift bg-gradient-to-r from-primary via-accent to-pink bg-[length:200%_auto] bg-clip-text text-transparent">
+      Bienvenu
     </span>
   );
 };
@@ -90,16 +64,14 @@ export const HeroSection = () => {
             ))}
           </motion.div>
 
-          {/* Main heading with gradient text and typewriter */}
+          {/* Main heading with gradient name */}
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight"
           >
-            Construire des infrastructures{" "}
-            <br className="hidden sm:block" />
-            <TypewriterHeading />
+            Brandon <AnimatedGradientName />
           </motion.h1>
 
           {/* Subheading */}
@@ -207,12 +179,13 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Floating UI cards - like ExamAi mockups */}
+      {/* Floating UI cards - Multiple elements */}
+      {/* Server Card - Top Left */}
       <motion.div 
         initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 0.8, x: 0 }}
+        animate={{ opacity: 0.85, x: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute top-1/4 left-[5%] hidden xl:block animate-float"
+        className="absolute top-[20%] left-[3%] hidden xl:block animate-float"
       >
         <motion.div 
           whileHover={{ scale: 1.05 }}
@@ -222,23 +195,26 @@ export const HeroSection = () => {
             <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
               <Server className="w-4 h-4 text-primary" />
             </div>
-            <div className="flex-1">
-              <div className="h-2 w-16 bg-muted rounded" />
-            </div>
+            <span className="text-xs font-medium text-foreground">Proxmox VE</span>
           </div>
           <div className="space-y-2">
-            <div className="h-2 w-full bg-muted/50 rounded" />
-            <div className="h-2 w-3/4 bg-muted/50 rounded" />
+            <div className="flex justify-between text-xs">
+              <span className="text-muted-foreground">CPU</span>
+              <span className="text-primary">24%</span>
+            </div>
+            <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
+              <div className="h-full w-1/4 bg-primary rounded-full" />
+            </div>
           </div>
         </motion.div>
       </motion.div>
 
+      {/* Homelab Card - Top Right */}
       <motion.div 
         initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 0.8, x: 0 }}
+        animate={{ opacity: 0.85, x: 0 }}
         transition={{ duration: 0.8, delay: 1.3 }}
-        className="absolute top-1/3 right-[5%] hidden xl:block animate-float-reverse"
-        style={{ animationDelay: '-2s' }}
+        className="absolute top-[18%] right-[3%] hidden xl:block animate-float-reverse"
       >
         <motion.div 
           whileHover={{ scale: 1.05 }}
@@ -257,6 +233,105 @@ export const HeroSection = () => {
               <p className="text-xs text-muted-foreground">5 VMs actives</p>
             </div>
           </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Active Directory Card - Middle Left */}
+      <motion.div 
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 0.8, x: 0 }}
+        transition={{ duration: 0.8, delay: 1.4 }}
+        className="absolute top-[45%] left-[2%] hidden xl:block animate-float"
+        style={{ animationDelay: '-3s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.05 }}
+          className="p-3 rounded-xl bg-card/80 border border-accent/30 backdrop-blur-xl shadow-elevated w-44"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-accent/20 flex items-center justify-center">
+              <Shield className="w-3 h-3 text-accent" />
+            </div>
+            <span className="text-xs font-medium text-foreground">Active Directory</span>
+          </div>
+          <div className="text-xs text-muted-foreground">
+            <p>12 utilisateurs</p>
+            <p className="text-accent">GPO configurées</p>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* pfSense Card - Middle Right */}
+      <motion.div 
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 0.8, x: 0 }}
+        transition={{ duration: 0.8, delay: 1.5 }}
+        className="absolute top-[50%] right-[2%] hidden xl:block animate-float-reverse"
+        style={{ animationDelay: '-1s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.05 }}
+          className="p-3 rounded-xl bg-card/80 border border-green/30 backdrop-blur-xl shadow-elevated w-44"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-green/20 flex items-center justify-center">
+              <Network className="w-3 h-3 text-green" />
+            </div>
+            <span className="text-xs font-medium text-foreground">pfSense</span>
+          </div>
+          <div className="flex items-center gap-2 text-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+            <span className="text-green">VPN IPsec UP</span>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Monitoring Card - Bottom Left */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 0.75, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.6 }}
+        className="absolute bottom-[25%] left-[5%] hidden xl:block animate-float"
+        style={{ animationDelay: '-4s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.05 }}
+          className="p-3 rounded-xl bg-card/80 border border-pink/30 backdrop-blur-xl shadow-elevated w-40"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-pink/20 flex items-center justify-center">
+              <Sparkles className="w-3 h-3 text-pink" />
+            </div>
+            <span className="text-xs font-medium text-foreground">Grafana</span>
+          </div>
+          <div className="flex gap-1">
+            {[40, 65, 45, 80, 55].map((h, i) => (
+              <div key={i} className="flex-1 bg-pink/20 rounded-sm" style={{ height: `${h * 0.3}px` }} />
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Docker Card - Bottom Right */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 0.75, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.7 }}
+        className="absolute bottom-[28%] right-[5%] hidden xl:block animate-float-reverse"
+        style={{ animationDelay: '-2s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.05 }}
+          className="p-3 rounded-xl bg-card/80 border border-primary/30 backdrop-blur-xl shadow-elevated w-40"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-primary/20 flex items-center justify-center">
+              <Server className="w-3 h-3 text-primary" />
+            </div>
+            <span className="text-xs font-medium text-foreground">Docker</span>
+          </div>
+          <p className="text-xs text-muted-foreground">8 conteneurs</p>
+          <p className="text-xs text-primary">Running</p>
         </motion.div>
       </motion.div>
 
