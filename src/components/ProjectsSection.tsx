@@ -1,5 +1,6 @@
-import { Folder, Server, Network, BarChart3, ArrowUpRight, ExternalLink } from "lucide-react";
+import { Folder, Server, Network, BarChart3, ArrowUpRight, ExternalLink, Monitor, Terminal as TerminalIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -10,6 +11,7 @@ const projects = [
     status: "Actif",
     statusType: "active" as const,
     highlight: true,
+    preview: "server",
   },
   {
     icon: Network,
@@ -18,6 +20,7 @@ const projects = [
     tags: ["pfSense", "VPN IPsec", "Windows Server", "Routage"],
     status: "Terminé",
     statusType: "completed" as const,
+    preview: "network",
   },
   {
     icon: BarChart3,
@@ -27,8 +30,78 @@ const projects = [
     status: "Terminé",
     statusType: "completed" as const,
     link: "https://github.com/BrandonBienvenu/-Grafana-Prometheus-and-Node-Exporter-",
+    preview: "chart",
   },
 ];
+
+const PreviewMockup = ({ type }: { type: string }) => {
+  if (type === "server") {
+    return (
+      <div className="p-4 rounded-xl bg-background/80 border border-border/50 backdrop-blur-sm">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="flex gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green/60" />
+          </div>
+          <span className="text-[10px] font-mono text-muted-foreground">terminal</span>
+        </div>
+        <div className="font-mono text-xs space-y-1">
+          <p className="text-muted-foreground">$ <span className="text-primary">systemctl status</span></p>
+          <p className="text-green text-[10px]">● nginx.service - active</p>
+          <p className="text-green text-[10px]">● ssh.service - active</p>
+          <p className="text-green text-[10px]">● docker.service - active</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "network") {
+    return (
+      <div className="p-4 rounded-xl bg-background/80 border border-border/50 backdrop-blur-sm">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-[10px] font-mono text-muted-foreground">Network Topology</span>
+        </div>
+        <div className="flex items-center justify-center gap-2">
+          <div className="w-8 h-8 rounded bg-primary/20 flex items-center justify-center">
+            <Monitor className="w-4 h-4 text-primary" />
+          </div>
+          <div className="w-8 border-t-2 border-dashed border-primary/40" />
+          <div className="w-8 h-8 rounded bg-accent/20 flex items-center justify-center">
+            <Network className="w-4 h-4 text-accent" />
+          </div>
+          <div className="w-8 border-t-2 border-dashed border-accent/40" />
+          <div className="w-8 h-8 rounded bg-green/20 flex items-center justify-center">
+            <Server className="w-4 h-4 text-green" />
+          </div>
+        </div>
+        <p className="text-[10px] text-center text-muted-foreground mt-2">Site A ↔ VPN ↔ Site B</p>
+      </div>
+    );
+  }
+
+  // Chart preview
+  return (
+    <div className="p-4 rounded-xl bg-background/80 border border-border/50 backdrop-blur-sm">
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-[10px] font-mono text-muted-foreground">CPU Usage</span>
+        <span className="text-[10px] text-primary">23%</span>
+      </div>
+      <div className="h-12 flex items-end gap-0.5">
+        {[40, 55, 35, 70, 45, 60, 30, 50].map((h, i) => (
+          <motion.div
+            key={i}
+            initial={{ height: 0 }}
+            whileInView={{ height: `${h}%` }}
+            transition={{ duration: 0.4, delay: i * 0.05 }}
+            viewport={{ once: true }}
+            className="flex-1 rounded-t bg-gradient-to-t from-primary/50 to-primary"
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export const ProjectsSection = () => {
   return (
@@ -40,7 +113,13 @@ export const ProjectsSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in-up">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink/10 border border-pink/30 mb-6">
               <Folder className="h-4 w-4 text-pink" />
               <span className="text-sm font-medium text-pink">Projets</span>
@@ -51,24 +130,29 @@ export const ProjectsSection = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               Des projets concrets où j'applique et développe mes compétences en infrastructure IT.
             </p>
-          </div>
+          </motion.div>
 
           {/* Projects Grid - Bento style like ExamAi */}
           <div className="grid lg:grid-cols-2 gap-6">
             {projects.map((project, index) => (
-              <div
+              <motion.div
                 key={project.title}
-                className={`group relative animate-fade-in-up ${
-                  project.highlight ? 'lg:col-span-2' : ''
-                }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className={`group relative ${project.highlight ? 'lg:col-span-2' : ''}`}
               >
                 {/* Hover glow */}
                 <div className="absolute inset-0 rounded-2xl bg-primary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                <div className={`relative rounded-2xl bg-card/80 border backdrop-blur-sm transition-all duration-500 h-full group-hover:-translate-y-1 overflow-hidden ${
-                  project.highlight ? 'border-primary/30' : 'border-border/50 hover:border-primary/30'
-                }`}>
+                <motion.div 
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className={`relative rounded-2xl bg-card/80 border backdrop-blur-sm transition-all duration-500 h-full overflow-hidden hover:shadow-elevated ${
+                    project.highlight ? 'border-primary/30' : 'border-border/50 hover:border-primary/30'
+                  }`}
+                >
                   {/* Gradient top bar for highlighted project */}
                   {project.highlight && (
                     <div className="h-1 w-full bg-gradient-to-r from-primary via-accent to-pink" />
@@ -77,9 +161,13 @@ export const ProjectsSection = () => {
                   <div className="p-6 md:p-8">
                     <div className={`flex flex-col ${project.highlight ? 'lg:flex-row lg:items-start' : ''} gap-6`}>
                       {/* Icon */}
-                      <div className="p-4 rounded-xl bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-glow-sm transition-all duration-300 shrink-0 w-fit">
+                      <motion.div 
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.3 }}
+                        className="p-4 rounded-xl bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300 shrink-0 w-fit"
+                      >
                         <project.icon className="h-8 w-8 text-primary" />
-                      </div>
+                      </motion.div>
                       
                       {/* Content */}
                       <div className="flex-1">
@@ -90,14 +178,16 @@ export const ProjectsSection = () => {
                               {project.title}
                             </h3>
                             {project.link && (
-                              <a
+                              <motion.a
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
                                 href={project.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-2 rounded-lg bg-secondary hover:bg-primary/20 text-muted-foreground hover:text-primary transition-all duration-300"
                               >
                                 <ArrowUpRight className="h-4 w-4" />
-                              </a>
+                              </motion.a>
                             )}
                           </div>
                           <span className={`shrink-0 px-4 py-1.5 text-xs font-medium rounded-full flex items-center gap-2 ${
@@ -120,52 +210,45 @@ export const ProjectsSection = () => {
                         {/* Tags */}
                         <div className="flex flex-wrap gap-2">
                           {project.tags.map((tag) => (
-                            <span
+                            <motion.span
                               key={tag}
+                              whileHover={{ scale: 1.05 }}
                               className="px-3 py-1.5 text-xs font-mono rounded-lg bg-secondary/80 border border-border text-muted-foreground group-hover:border-primary/20 group-hover:text-foreground/80 transition-all duration-300"
                             >
                               {tag}
-                            </span>
+                            </motion.span>
                           ))}
                         </div>
                       </div>
                       
-                      {/* Preview mockup for highlighted project */}
-                      {project.highlight && (
-                        <div className="hidden lg:block shrink-0 w-64">
-                          <div className="p-4 rounded-xl bg-background/50 border border-border/50">
-                            <div className="flex items-center gap-2 mb-3">
-                              <div className="flex gap-1.5">
-                                <div className="w-3 h-3 rounded-full bg-destructive/50" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                                <div className="w-3 h-3 rounded-full bg-green/50" />
-                              </div>
-                            </div>
-                            <div className="space-y-2">
-                              <div className="h-2 w-full bg-primary/20 rounded" />
-                              <div className="h-2 w-3/4 bg-muted rounded" />
-                              <div className="h-2 w-1/2 bg-muted rounded" />
-                              <div className="h-8 w-full bg-muted/50 rounded mt-4" />
-                            </div>
-                          </div>
-                        </div>
-                      )}
+                      {/* Preview mockup */}
+                      <div className={`shrink-0 ${project.highlight ? 'hidden lg:block w-64' : 'w-full lg:w-48'}`}>
+                        <PreviewMockup type={project.preview} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-12 animate-fade-in-up stagger-4">
-            <Button variant="heroOutline" size="lg" asChild>
-              <a href="https://github.com/BrandonBienvenu" target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="h-4 w-4" />
-                Voir sur GitHub
-              </a>
-            </Button>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Button variant="heroOutline" size="lg" asChild>
+                <a href="https://github.com/BrandonBienvenu" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="h-4 w-4" />
+                  Voir sur GitHub
+                </a>
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

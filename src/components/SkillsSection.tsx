@@ -1,4 +1,5 @@
 import { Server, Network, Layers, Terminal, Wrench, Zap } from "lucide-react";
+import { motion } from "framer-motion";
 
 const skillCategories = [
   {
@@ -38,6 +39,49 @@ const skillCategories = [
   },
 ];
 
+const colorClasses = {
+  primary: {
+    bg: "bg-primary/10",
+    bgHover: "group-hover:bg-primary/20",
+    glow: "bg-primary/20",
+    text: "text-primary",
+    border: "border-primary/20",
+    dot: "bg-primary",
+  },
+  accent: {
+    bg: "bg-accent/10",
+    bgHover: "group-hover:bg-accent/20",
+    glow: "bg-accent/20",
+    text: "text-accent",
+    border: "border-accent/20",
+    dot: "bg-accent",
+  },
+  pink: {
+    bg: "bg-pink/10",
+    bgHover: "group-hover:bg-pink/20",
+    glow: "bg-pink/20",
+    text: "text-pink",
+    border: "border-pink/20",
+    dot: "bg-pink",
+  },
+  green: {
+    bg: "bg-green/10",
+    bgHover: "group-hover:bg-green/20",
+    glow: "bg-green/20",
+    text: "text-green",
+    border: "border-green/20",
+    dot: "bg-green",
+  },
+  cyan: {
+    bg: "bg-cyan/10",
+    bgHover: "group-hover:bg-cyan/20",
+    glow: "bg-cyan/20",
+    text: "text-cyan",
+    border: "border-cyan/20",
+    dot: "bg-cyan",
+  },
+};
+
 export const SkillsSection = () => {
   return (
     <section id="skills" className="py-24 md:py-32 relative overflow-hidden">
@@ -49,7 +93,13 @@ export const SkillsSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section Header - Premium style */}
-          <div className="text-center mb-16 animate-fade-in-up">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 mb-6">
               <Zap className="h-4 w-4 text-accent" />
               <span className="text-sm font-medium text-accent">Compétences</span>
@@ -60,94 +110,93 @@ export const SkillsSection = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               Une base solide construite par la pratique, l'expérimentation en homelab et l'apprentissage continu.
             </p>
-          </div>
+          </motion.div>
 
           {/* Skills Bento Grid - Like ExamAi feature cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillCategories.map((category, index) => (
-              <div
-                key={category.title}
-                className={`group relative animate-fade-in-up ${
-                  index === 0 ? 'lg:col-span-2' : ''
-                }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {/* Hover glow */}
-                <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl ${
-                  category.color === 'primary' ? 'bg-primary/20' :
-                  category.color === 'accent' ? 'bg-accent/20' :
-                  category.color === 'pink' ? 'bg-pink/20' :
-                  category.color === 'green' ? 'bg-green/20' :
-                  'bg-cyan/20'
-                }`} />
-                
-                <div className="relative p-6 md:p-8 rounded-2xl bg-background/80 border border-border/50 backdrop-blur-sm group-hover:border-primary/30 transition-all duration-500 h-full group-hover:-translate-y-1">
-                  {/* Header */}
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className={`p-3 rounded-xl transition-all duration-300 ${
-                      category.color === 'primary' ? 'bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-glow-sm' :
-                      category.color === 'accent' ? 'bg-accent/10 group-hover:bg-accent/20' :
-                      category.color === 'pink' ? 'bg-pink/10 group-hover:bg-pink/20' :
-                      category.color === 'green' ? 'bg-green/10 group-hover:bg-green/20' :
-                      'bg-cyan/10 group-hover:bg-cyan/20'
-                    }`}>
-                      <category.icon className={`h-6 w-6 ${
-                        category.color === 'primary' ? 'text-primary' :
-                        category.color === 'accent' ? 'text-accent' :
-                        category.color === 'pink' ? 'text-pink' :
-                        category.color === 'green' ? 'text-green' :
-                        'text-cyan'
-                      }`} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-display font-bold text-lg">{category.title}</h3>
-                        <span className={`w-2 h-2 rounded-full ${
-                          category.color === 'primary' ? 'bg-primary' :
-                          category.color === 'accent' ? 'bg-accent' :
-                          category.color === 'pink' ? 'bg-pink' :
-                          category.color === 'green' ? 'bg-green' :
-                          'bg-cyan'
-                        }`} />
-                      </div>
-                      <p className="text-sm text-muted-foreground">{category.description}</p>
-                    </div>
-                  </div>
-
-                  {/* Skills with premium pill styling */}
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill, skillIndex) => (
-                      <span
-                        key={skill}
-                        className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300 ${
-                          category.color === 'primary' ? 'bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20' :
-                          category.color === 'accent' ? 'bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20' :
-                          category.color === 'pink' ? 'bg-pink/10 text-pink border border-pink/20 hover:bg-pink/20' :
-                          category.color === 'green' ? 'bg-green/10 text-green border border-green/20 hover:bg-green/20' :
-                          'bg-cyan/10 text-cyan border border-cyan/20 hover:bg-cyan/20'
-                        }`}
-                        style={{ animationDelay: `${skillIndex * 0.05}s` }}
+            {skillCategories.map((category, index) => {
+              const colors = colorClasses[category.color];
+              
+              return (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`group relative ${index === 0 ? 'lg:col-span-2' : ''}`}
+                >
+                  {/* Hover glow */}
+                  <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl ${colors.glow}`} />
+                  
+                  <motion.div 
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative p-6 md:p-8 rounded-2xl bg-background/80 border border-border/50 backdrop-blur-sm group-hover:border-primary/30 transition-all duration-500 h-full hover:shadow-elevated"
+                  >
+                    {/* Header */}
+                    <div className="flex items-start gap-4 mb-6">
+                      <motion.div 
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.3 }}
+                        className={`p-3 rounded-xl transition-all duration-300 ${colors.bg} ${colors.bgHover} group-hover:shadow-glow`}
                       >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Progress indicator for first card */}
-                  {index === 0 && (
-                    <div className="mt-6 pt-6 border-t border-border/50">
-                      <div className="flex items-center justify-between text-sm mb-2">
-                        <span className="text-muted-foreground">Maîtrise</span>
-                        <span className="text-primary font-medium">Avancé</span>
-                      </div>
-                      <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                        <div className="h-full w-4/5 bg-gradient-to-r from-primary to-cyan rounded-full" />
+                        <category.icon className={`h-6 w-6 ${colors.text}`} />
+                      </motion.div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h3 className="font-display font-bold text-lg">{category.title}</h3>
+                          <span className={`w-2 h-2 rounded-full ${colors.dot}`} />
+                        </div>
+                        <p className="text-sm text-muted-foreground">{category.description}</p>
                       </div>
                     </div>
-                  )}
-                </div>
-              </div>
-            ))}
+
+                    {/* Skills with premium pill styling */}
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill, skillIndex) => (
+                        <motion.span
+                          key={skill}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                          viewport={{ once: true }}
+                          whileHover={{ scale: 1.08, y: -2 }}
+                          className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300 cursor-default ${colors.bg} ${colors.text} border ${colors.border} hover:shadow-sm`}
+                        >
+                          {skill}
+                        </motion.span>
+                      ))}
+                    </div>
+
+                    {/* Progress indicator for first card */}
+                    {index === 0 && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        viewport={{ once: true }}
+                        className="mt-6 pt-6 border-t border-border/50"
+                      >
+                        <div className="flex items-center justify-between text-sm mb-2">
+                          <span className="text-muted-foreground">Maîtrise</span>
+                          <span className="text-primary font-medium">Avancé</span>
+                        </div>
+                        <div className="h-2 bg-secondary rounded-full overflow-hidden">
+                          <motion.div 
+                            initial={{ width: 0 }}
+                            whileInView={{ width: "80%" }}
+                            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                            viewport={{ once: true }}
+                            className="h-full bg-gradient-to-r from-primary to-cyan rounded-full"
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+                  </motion.div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
