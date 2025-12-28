@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Terminal } from "lucide-react";
+import { Menu, X, Terminal, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -8,6 +8,11 @@ const navLinks = [
   { href: "#projects", label: "Projets" },
   { href: "#goals", label: "Objectifs" },
   { href: "#contact", label: "Contact" },
+];
+
+const socialLinks = [
+  { href: "https://github.com/BrandonBienvenu", icon: Github, label: "GitHub" },
+  { href: "https://www.linkedin.com/in/brandon-bienvenu-045858348/", icon: Linkedin, label: "LinkedIn" },
 ];
 
 export const Navigation = () => {
@@ -79,8 +84,20 @@ export const Navigation = () => {
             ))}
           </div>
 
-          {/* CTA Button - Desktop */}
-          <div className="hidden md:block">
+          {/* Social icons + CTA - Desktop */}
+          <div className="hidden md:flex items-center gap-3">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                aria-label={link.label}
+              >
+                <link.icon className="h-4 w-4" />
+              </a>
+            ))}
             <Button variant="hero" size="sm" asChild>
               <a href="#contact">Me contacter</a>
             </Button>
