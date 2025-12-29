@@ -5,12 +5,6 @@ import { AnimatedBackground } from "./AnimatedBackground";
 import { DashboardPreview } from "./DashboardPreview";
 import { motion } from "framer-motion";
 
-const featurePills = [
-  { icon: Shield, label: "Sécurité First" },
-  { icon: Server, label: "Infrastructure" },
-  { icon: Network, label: "Réseaux" },
-];
-
 const AnimatedGradientName = () => {
   return (
     <span className="inline-block animate-gradient-shift bg-gradient-to-r from-primary via-accent to-pink bg-[length:200%_auto] bg-clip-text text-transparent">
@@ -40,29 +34,6 @@ export const HeroSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Feature pills row - like Devty.io */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-wrap items-center justify-center gap-3 mb-10"
-          >
-            {featurePills.map((pill, index) => (
-              <motion.div 
-                key={pill.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                whileHover={{ scale: 1.05, boxShadow: "0 0 20px hsl(175 80% 50% / 0.3)" }}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/60 border border-border/60 backdrop-blur-sm cursor-default"
-              >
-                <div className="p-1 rounded-full bg-primary/20">
-                  <pill.icon className="h-3.5 w-3.5 text-primary" />
-                </div>
-                <span className="text-sm text-muted-foreground">{pill.label}</span>
-              </motion.div>
-            ))}
-          </motion.div>
 
           {/* Main heading with gradient name */}
           <motion.h1 
@@ -137,8 +108,8 @@ export const HeroSection = () => {
             className="flex flex-wrap items-center justify-center gap-6 mb-16"
           >
             <motion.div 
-              whileHover={{ scale: 1.05, y: -2 }}
-              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-card/60 border border-border/50 backdrop-blur-sm shadow-lg transition-shadow hover:shadow-glow"
+              whileHover={{ scale: 1.02 }}
+              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-card/60 border border-border/50 backdrop-blur-sm shadow-lg transition-all duration-300"
             >
               <MapPin className="h-5 w-5 text-primary" />
               <div className="text-left">
@@ -147,8 +118,8 @@ export const HeroSection = () => {
               </div>
             </motion.div>
             <motion.div 
-              whileHover={{ scale: 1.05, y: -2 }}
-              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-card/60 border border-border/50 backdrop-blur-sm shadow-lg transition-shadow hover:shadow-glow"
+              whileHover={{ scale: 1.02 }}
+              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-card/60 border border-border/50 backdrop-blur-sm shadow-lg transition-all duration-300"
             >
               <GraduationCap className="h-5 w-5 text-accent" />
               <div className="text-left">
@@ -157,8 +128,8 @@ export const HeroSection = () => {
               </div>
             </motion.div>
             <motion.div 
-              whileHover={{ scale: 1.05, y: -2 }}
-              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-primary/10 border border-primary/30 backdrop-blur-sm shadow-lg animate-glow-pulse"
+              whileHover={{ scale: 1.02 }}
+              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-primary/10 border border-primary/30 backdrop-blur-sm shadow-lg transition-all duration-300"
             >
               <Clock className="h-5 w-5 text-primary" />
               <div className="text-left">
@@ -191,11 +162,17 @@ export const HeroSection = () => {
           whileHover={{ scale: 1.05 }}
           className="p-4 rounded-xl bg-card/80 border border-border/50 backdrop-blur-xl shadow-elevated w-48"
         >
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-              <Server className="w-4 h-4 text-primary" />
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                <Server className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-xs font-medium text-foreground">Proxmox VE</span>
             </div>
-            <span className="text-xs font-medium text-foreground">Proxmox VE</span>
+            <div className="flex items-center gap-1 text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+              <span className="text-green">Actif</span>
+            </div>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between text-xs">
@@ -220,9 +197,11 @@ export const HeroSection = () => {
           whileHover={{ scale: 1.05 }}
           className="p-4 rounded-xl bg-card/80 border border-border/50 backdrop-blur-xl shadow-elevated w-52"
         >
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-2 h-2 rounded-full bg-green animate-pulse" />
-            <span className="text-xs text-green font-medium">ACTIF</span>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green animate-pulse" />
+              <span className="text-xs text-green font-medium">Actif</span>
+            </div>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
@@ -254,9 +233,9 @@ export const HeroSection = () => {
             </div>
             <span className="text-xs font-medium text-foreground">Active Directory</span>
           </div>
-          <div className="text-xs text-muted-foreground">
-            <p>12 utilisateurs</p>
-            <p className="text-accent">GPO configurées</p>
+          <div className="flex items-center gap-2 text-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+            <span className="text-green">Actif</span>
           </div>
         </motion.div>
       </motion.div>
@@ -277,11 +256,11 @@ export const HeroSection = () => {
             <div className="w-6 h-6 rounded-lg bg-green/20 flex items-center justify-center">
               <Network className="w-3 h-3 text-green" />
             </div>
-            <span className="text-xs font-medium text-foreground">pfSense</span>
+            <span className="text-xs font-medium text-foreground">VPN IPsec</span>
           </div>
           <div className="flex items-center gap-2 text-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-            <span className="text-green">VPN IPsec UP</span>
+            <span className="text-green">Actif</span>
           </div>
         </motion.div>
       </motion.div>
@@ -298,16 +277,21 @@ export const HeroSection = () => {
           whileHover={{ scale: 1.05 }}
           className="p-3 rounded-xl bg-card/80 border border-pink/30 backdrop-blur-xl shadow-elevated w-40"
         >
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-6 h-6 rounded-lg bg-pink/20 flex items-center justify-center">
-              <Sparkles className="w-3 h-3 text-pink" />
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg bg-pink/20 flex items-center justify-center">
+                <Sparkles className="w-3 h-3 text-pink" />
+              </div>
+              <span className="text-xs font-medium text-foreground">Grafana</span>
             </div>
-            <span className="text-xs font-medium text-foreground">Grafana</span>
+            <div className="flex items-center gap-1 text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+              <span className="text-green">Actif</span>
+            </div>
           </div>
-          <div className="flex gap-1">
-            {[40, 65, 45, 80, 55].map((h, i) => (
-              <div key={i} className="flex-1 bg-pink/20 rounded-sm" style={{ height: `${h * 0.3}px` }} />
-            ))}
+          <div className="text-center">
+            <p className="text-lg font-bold text-pink">67%</p>
+            <p className="text-xs text-muted-foreground">CPU</p>
           </div>
         </motion.div>
       </motion.div>
@@ -324,14 +308,19 @@ export const HeroSection = () => {
           whileHover={{ scale: 1.05 }}
           className="p-3 rounded-xl bg-card/80 border border-primary/30 backdrop-blur-xl shadow-elevated w-40"
         >
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-6 h-6 rounded-lg bg-primary/20 flex items-center justify-center">
-              <Server className="w-3 h-3 text-primary" />
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg bg-primary/20 flex items-center justify-center">
+                <Server className="w-3 h-3 text-primary" />
+              </div>
+              <span className="text-xs font-medium text-foreground">Docker</span>
             </div>
-            <span className="text-xs font-medium text-foreground">Docker</span>
+            <div className="flex items-center gap-1 text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+              <span className="text-green">Actif</span>
+            </div>
           </div>
           <p className="text-xs text-muted-foreground">8 conteneurs</p>
-          <p className="text-xs text-primary">Running</p>
         </motion.div>
       </motion.div>
 

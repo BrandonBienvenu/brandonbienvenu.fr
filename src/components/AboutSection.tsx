@@ -1,4 +1,4 @@
-import { User, Target, Lightbulb, Shield, Sparkles, ArrowRight } from "lucide-react";
+import { User, Target, Lightbulb, Shield, Sparkles, ArrowRight, ExternalLink } from "lucide-react";
 
 const traits = [
   {
@@ -18,7 +18,7 @@ const traits = [
   {
     icon: Shield,
     title: "Esprit Sécurité",
-    description: "Je pense comme un attaquant pour construire comme un défenseur. La sécurité n'est pas une réflexion après coup.",
+    description: "J'adopte une vision offensive pour mieux défendre. La sécurité est intégrée dès la conception.",
     color: "pink" as const,
     gradient: "from-pink/20 to-accent/20",
   },
@@ -63,13 +63,13 @@ export const AboutSection = () => {
               <div className="grid md:grid-cols-[1fr,auto] gap-8 items-center">
                 <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    Je suis <span className="text-foreground font-semibold">Brandon Bienvenu</span>, un futur administrateur systèmes et passionné de cybersécurité de 16 ans, basé à <span className="text-primary font-medium">Reims, France</span>.
+                    Je m'appelle <span className="text-foreground font-semibold">Brandon Bienvenu</span>, un futur administrateur systèmes et passionné de cybersécurité de 16 ans, basé à <span className="text-primary font-medium">Reims, France</span>.
                   </p>
                   <p>
                     Actuellement en BAC PRO CIEL au Lycée Georges Brière, je consacre mon temps libre à maîtriser les fondamentaux de la gestion d'infrastructures IT à travers mon <span className="text-foreground font-medium">environnement homelab</span>.
                   </p>
                   <p>
-                    Mon approche : je n'étudie pas seulement les systèmes — <span className="text-gradient font-semibold">je les construis</span>.
+                    Mon approche : je ne me contente pas de lire la documentation — <span className="text-gradient font-semibold">je mets les mains dans le cambouis</span>.
                   </p>
                 </div>
                 
@@ -131,11 +131,16 @@ export const AboutSection = () => {
                     {trait.description}
                   </p>
                   
-                  {/* Subtle arrow indicator */}
-                  <div className="flex items-center gap-2 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span>En savoir plus</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </div>
+                  {/* LinkedIn link on hover */}
+                  <a 
+                    href="https://www.linkedin.com/in/brandon-bienvenu-045858348/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity hover:underline"
+                  >
+                    <span>Voir mon profil</span>
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
                 </div>
               </div>
             ))}
