@@ -81,11 +81,10 @@ export const ContactSection = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-2xl opacity-50" />
             <motion.div 
               whileHover={{ y: -4 }}
               transition={{ duration: 0.3 }}
-              className="relative p-8 md:p-10 rounded-2xl bg-gradient-to-br from-primary/10 via-card to-card border border-primary/30 text-center"
+              className="relative p-8 md:p-10 rounded-2xl bg-gradient-to-br from-primary/5 via-card to-card border border-primary/20 text-center"
             >
               <motion.div 
                 animate={{ scale: [1, 1.1, 1] }}
@@ -108,7 +107,7 @@ export const ContactSection = () => {
               </p>
               
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button variant="hero" size="xl" className="mb-8 group" asChild>
+                <Button variant="hero" size="xl" className="mb-8 group shadow-lg" asChild>
                   <a href="mailto:contact@brandonbienvenu.dev">
                     <Sparkles className="h-5 w-5" />
                     Envoyer un email
@@ -125,7 +124,7 @@ export const ContactSection = () => {
                   href="https://github.com/BrandonBienvenu" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="group/social p-4 rounded-xl bg-secondary/80 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 hover:shadow-glow"
+                  className="group/social p-4 rounded-xl bg-secondary/80 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
                 >
                   <Github className="h-5 w-5 text-muted-foreground group-hover/social:text-primary transition-colors" />
                 </motion.a>
@@ -135,7 +134,7 @@ export const ContactSection = () => {
                   href="https://www.linkedin.com/in/brandon-bienvenu-045858348/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="group/social p-4 rounded-xl bg-secondary/80 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 hover:shadow-glow"
+                  className="group/social p-4 rounded-xl bg-secondary/80 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
                 >
                   <Linkedin className="h-5 w-5 text-muted-foreground group-hover/social:text-primary transition-colors" />
                 </motion.a>

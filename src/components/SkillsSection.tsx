@@ -105,7 +105,7 @@ export const SkillsSection = () => {
               <span className="text-sm font-medium text-accent">Compétences</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-              Arsenal <span className="text-gradient-accent">Technique</span>
+              Arsenal <span className="bg-gradient-to-r from-accent to-pink bg-clip-text text-transparent">Technique</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               Une base solide construite par la pratique, l'expérimentation en homelab et l'apprentissage continu.
@@ -126,20 +126,18 @@ export const SkillsSection = () => {
                   viewport={{ once: true }}
                   className={`group relative ${index === 0 ? 'lg:col-span-2' : ''}`}
                 >
-                  {/* Hover glow */}
-                  <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl ${colors.glow}`} />
-                  
                   <motion.div 
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.3 }}
-                    className="relative p-6 md:p-8 rounded-2xl bg-background/80 border border-border/50 backdrop-blur-sm group-hover:border-primary/30 transition-all duration-500 h-full hover:shadow-elevated"
+                    className="relative p-6 md:p-8 rounded-2xl bg-background/80 border border-border/50 backdrop-blur-sm group-hover:border-opacity-60 transition-all duration-500 h-full hover:shadow-lg"
+                    style={{ borderColor: `hsl(var(--${category.color === 'primary' ? 'primary' : category.color === 'accent' ? 'accent' : category.color === 'pink' ? 'pink' : category.color === 'green' ? 'green' : 'cyan'}) / 0.3)` }}
                   >
                     {/* Header */}
                     <div className="flex items-start gap-4 mb-6">
                       <motion.div 
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ duration: 0.3 }}
-                        className={`p-3 rounded-xl transition-all duration-300 ${colors.bg} ${colors.bgHover} group-hover:shadow-glow`}
+                        className={`p-3 rounded-xl transition-all duration-300 ${colors.bg} border ${colors.border}`}
                       >
                         <category.icon className={`h-6 w-6 ${colors.text}`} />
                       </motion.div>
