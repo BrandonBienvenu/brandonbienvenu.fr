@@ -69,7 +69,7 @@ export const AboutSection = () => {
                     Actuellement en BAC PRO CIEL au Lycée Georges Brière, je consacre mon temps libre à maîtriser les fondamentaux de la gestion d'infrastructures IT à travers mon <span className="text-foreground font-medium">environnement homelab</span>.
                   </p>
                   <p>
-                    Mon approche : je ne me contente pas de lire la documentation — <span className="text-gradient font-semibold">je mets les mains dans le cambouis</span>.
+                    Mon approche : <span className="text-gradient font-semibold">j'apprends en construisant</span>. Chaque projet est une opportunité de maîtriser de nouvelles compétences techniques.
                   </p>
                 </div>
                 
