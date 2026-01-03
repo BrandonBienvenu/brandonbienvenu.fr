@@ -105,7 +105,7 @@ export const SkillsSection = () => {
               <span className="text-sm font-medium text-accent">Compétences</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-              Arsenal <span className="bg-gradient-to-r from-accent to-pink bg-clip-text text-transparent">Technique</span>
+              Arsenal <span className="animate-gradient-shift bg-gradient-to-r from-primary via-accent to-pink bg-[length:200%_auto] bg-clip-text text-transparent">Technique</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               Une base solide construite par la pratique, l'expérimentation en homelab et l'apprentissage continu.
@@ -122,22 +122,25 @@ export const SkillsSection = () => {
                   key={category.title}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
                   viewport={{ once: true }}
                   className={`group relative ${index === 0 ? 'lg:col-span-2' : ''}`}
                 >
                   <motion.div 
-                    whileHover={{ y: -4 }}
-                    transition={{ duration: 0.3 }}
-                    className="relative p-6 md:p-8 rounded-2xl bg-background/80 border border-border/50 backdrop-blur-sm group-hover:border-opacity-60 transition-all duration-500 h-full hover:shadow-lg"
-                    style={{ borderColor: `hsl(var(--${category.color === 'primary' ? 'primary' : category.color === 'accent' ? 'accent' : category.color === 'pink' ? 'pink' : category.color === 'green' ? 'green' : 'cyan'}) / 0.3)` }}
+                    whileHover={{ 
+                      y: -4,
+                      boxShadow: `0 20px 40px -15px hsl(var(--${category.color}) / 0.25)`
+                    }}
+                    transition={{ duration: 0.15 }}
+                    className="relative p-6 md:p-8 rounded-2xl bg-background/80 border backdrop-blur-sm transition-all duration-150 h-full"
+                    style={{ borderColor: `hsl(var(--${category.color}) / 0.3)` }}
                   >
                     {/* Header */}
                     <div className="flex items-start gap-4 mb-6">
                       <motion.div 
                         whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ duration: 0.3 }}
-                        className={`p-3 rounded-xl transition-all duration-300 ${colors.bg} border ${colors.border}`}
+                        transition={{ duration: 0.15 }}
+                        className={`p-3 rounded-xl transition-all duration-150 ${colors.bg} border ${colors.border}`}
                       >
                         <category.icon className={`h-6 w-6 ${colors.text}`} />
                       </motion.div>

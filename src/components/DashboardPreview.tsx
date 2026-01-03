@@ -141,7 +141,12 @@ export const DashboardPreview = () => {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   onClick={() => setSelectedMetric(metric)}
-                  className={`p-4 rounded-xl border backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 ${colors.bg} ${colors.border}`}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -4,
+                    boxShadow: `0 10px 30px -10px hsl(var(--${metric.color}) / 0.3)`
+                  }}
+                  className={`p-4 rounded-xl border backdrop-blur-sm cursor-pointer transition-all duration-200 ${colors.bg} ${colors.border}`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
