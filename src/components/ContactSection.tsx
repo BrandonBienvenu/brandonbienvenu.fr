@@ -106,9 +106,9 @@ export const ContactSection = () => {
                 Je suis toujours ouvert aux discussions sur les projets techniques, les stages ou les opportunités d'apprentissage.
               </p>
               
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} id="send-message-btn">
                 <Button variant="hero" size="xl" className="mb-8 group shadow-lg" asChild>
-                  <a href="mailto:contact@brandonbienvenu.dev">
+                  <a href="mailto:brandonbienvenu1@gmail.com">
                     <Sparkles className="h-5 w-5" />
                     Envoyer un email
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
