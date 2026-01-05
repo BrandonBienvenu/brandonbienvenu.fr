@@ -2,12 +2,12 @@ import { useState, useRef, useEffect, KeyboardEvent } from "react";
 import { motion } from "framer-motion";
 
 const commands = [
-  { cmd: "cv", desc: "Télécharger mon CV", action: () => window.open("/cv/BIENVENU_brandon.pdf", "_blank") },
-  { cmd: "github", desc: "Voir mon GitHub", action: () => window.open("https://github.com/BrandonBienvenu", "_blank") },
-  { cmd: "linkedin", desc: "Voir mon LinkedIn", action: () => window.open("https://www.linkedin.com/in/brandon-bienvenu-045858348/", "_blank") },
-  { cmd: "contact", desc: "Aller au bouton d'envoi", action: () => document.getElementById("send-message-btn")?.scrollIntoView({ behavior: "smooth", block: "center" }) },
-  { cmd: "67", desc: "???", action: null },
-  { cmd: "help", desc: "Afficher les commandes disponibles", action: null },
+  { cmd: "cv", desc: "Télécharger mon CV", action: () => window.open("/cv/BIENVENU_brandon.pdf", "_blank"), hidden: false },
+  { cmd: "github", desc: "Voir mon GitHub", action: () => window.open("https://github.com/BrandonBienvenu", "_blank"), hidden: false },
+  { cmd: "linkedin", desc: "Voir mon LinkedIn", action: () => window.open("https://www.linkedin.com/in/brandon-bienvenu-045858348/", "_blank"), hidden: false },
+  { cmd: "contact", desc: "Aller au bouton d'envoi", action: () => document.getElementById("send-message-btn")?.scrollIntoView({ behavior: "smooth", block: "center" }), hidden: false },
+  { cmd: "67", desc: "???", action: null, hidden: true },
+  { cmd: "help", desc: "Afficher les commandes disponibles", action: null, hidden: false },
 ];
 
 export const InteractiveTerminal = () => {
@@ -25,7 +25,7 @@ export const InteractiveTerminal = () => {
     setHistory((prev) => [...prev, { type: "input", content: `$ ${trimmedCmd}` }]);
 
     if (trimmedCmd === "help") {
-      const helpOutput = commands.filter(c => c.cmd !== "67").map((c) => `  ${c.cmd.padEnd(12)} - ${c.desc}`).join("\n");
+      const helpOutput = commands.filter(c => !c.hidden).map((c) => `  ${c.cmd.padEnd(12)} - ${c.desc}`).join("\n");
       setHistory((prev) => [
         ...prev,
         { type: "output", content: `Commandes disponibles:\n${helpOutput}` },
@@ -40,11 +40,7 @@ export const InteractiveTerminal = () => {
  ___/ /  / /  /   |  
 /____/  /_/  /_/|_|  
                      
-🎵 "SIX SEVEN KID" 🎵
-        
-   Why you actin' like you know me?
-   Why you actin' like you know me?
-   Boy, you better keep on scrollin'...
+        SIX SEVEN KID
         ` },
       ]);
     } else if (trimmedCmd === "clear") {
@@ -115,7 +111,7 @@ export const InteractiveTerminal = () => {
           {!isTyping && history.length === 0 && (
             <div className="text-muted-foreground animate-pulse">
               <p className="mb-2">Commandes disponibles:</p>
-              {commands.map((c) => (
+              {commands.filter(c => !c.hidden).map((c) => (
                 <p key={c.cmd} className="text-xs">
                   <span className="text-primary">{c.cmd.padEnd(12)}</span>
                   <span className="text-muted-foreground"> - {c.desc}</span>

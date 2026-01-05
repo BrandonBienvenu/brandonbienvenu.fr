@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { ChevronDown, MapPin, GraduationCap, Clock, Shield, Server, Network, Sparkles } from "lucide-react";
+import { ChevronDown, MapPin, GraduationCap, Clock, Shield, Server, Network, Sparkles, Database, HardDrive, Wifi, Lock, Monitor, Container, Activity, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedBackground } from "./AnimatedBackground";
 import { DashboardPreview } from "./DashboardPreview";
@@ -311,7 +310,7 @@ export const HeroSection = () => {
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Server className="w-3 h-3 text-primary" />
+                <Container className="w-3 h-3 text-primary" />
               </div>
               <span className="text-xs font-medium text-foreground">Docker</span>
             </div>
@@ -321,6 +320,160 @@ export const HeroSection = () => {
             </div>
           </div>
           <p className="text-xs text-muted-foreground">8 conteneurs</p>
+        </motion.div>
+      </motion.div>
+
+      {/* Portainer Card - Lower Left */}
+      <motion.div 
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 0.7, x: 0 }}
+        transition={{ duration: 0.8, delay: 1.8 }}
+        className="absolute bottom-[15%] left-[8%] hidden xl:block animate-float"
+        style={{ animationDelay: '-5s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.05 }}
+          className="p-3 rounded-xl bg-card/80 border border-accent/30 backdrop-blur-xl shadow-elevated w-36"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-accent/20 flex items-center justify-center">
+              <Monitor className="w-3 h-3 text-accent" />
+            </div>
+            <span className="text-xs font-medium text-foreground">Portainer</span>
+          </div>
+          <div className="flex items-center gap-1 text-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+            <span className="text-green">Actif</span>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* pfSense Card - Lower Right */}
+      <motion.div 
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 0.7, x: 0 }}
+        transition={{ duration: 0.8, delay: 1.9 }}
+        className="absolute bottom-[12%] right-[8%] hidden xl:block animate-float-reverse"
+        style={{ animationDelay: '-3s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.05 }}
+          className="p-3 rounded-xl bg-card/80 border border-green/30 backdrop-blur-xl shadow-elevated w-36"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-green/20 flex items-center justify-center">
+              <Lock className="w-3 h-3 text-green" />
+            </div>
+            <span className="text-xs font-medium text-foreground">pfSense</span>
+          </div>
+          <div className="flex items-center gap-1 text-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+            <span className="text-green">Actif</span>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Zabbix Monitoring - Top Center Left */}
+      <motion.div 
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 0.65, y: 0 }}
+        transition={{ duration: 0.8, delay: 2.0 }}
+        className="absolute top-[30%] left-[12%] hidden xl:block animate-float-reverse"
+        style={{ animationDelay: '-6s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.05 }}
+          className="p-2 rounded-lg bg-card/70 border border-pink/30 backdrop-blur-xl shadow-elevated"
+        >
+          <div className="flex items-center gap-2">
+            <Activity className="w-4 h-4 text-pink" />
+            <span className="text-xs font-medium text-foreground">Zabbix</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* NGINX Card - Top Center Right */}
+      <motion.div 
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 0.65, y: 0 }}
+        transition={{ duration: 0.8, delay: 2.1 }}
+        className="absolute top-[32%] right-[12%] hidden xl:block animate-float"
+        style={{ animationDelay: '-4s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.05 }}
+          className="p-2 rounded-lg bg-card/70 border border-primary/30 backdrop-blur-xl shadow-elevated"
+        >
+          <div className="flex items-center gap-2">
+            <HardDrive className="w-4 h-4 text-primary" />
+            <span className="text-xs font-medium text-foreground">NGINX</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* SSH Badge - Floating small */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.6, scale: 1 }}
+        transition={{ duration: 0.8, delay: 2.2 }}
+        className="absolute top-[60%] left-[6%] hidden xl:block animate-float"
+        style={{ animationDelay: '-7s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.1 }}
+          className="px-3 py-1.5 rounded-full bg-card/70 border border-accent/30 backdrop-blur-xl"
+        >
+          <span className="text-xs font-mono text-accent">SSH</span>
+        </motion.div>
+      </motion.div>
+
+      {/* RAID Badge */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.6, scale: 1 }}
+        transition={{ duration: 0.8, delay: 2.3 }}
+        className="absolute top-[65%] right-[6%] hidden xl:block animate-float-reverse"
+        style={{ animationDelay: '-2s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.1 }}
+          className="px-3 py-1.5 rounded-full bg-card/70 border border-pink/30 backdrop-blur-xl"
+        >
+          <span className="text-xs font-mono text-pink">RAID</span>
+        </motion.div>
+      </motion.div>
+
+      {/* Ansible Badge */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.55, scale: 1 }}
+        transition={{ duration: 0.8, delay: 2.4 }}
+        className="absolute top-[75%] left-[15%] hidden xl:block animate-float-reverse"
+        style={{ animationDelay: '-8s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.1 }}
+          className="px-3 py-1.5 rounded-full bg-card/70 border border-primary/30 backdrop-blur-xl"
+        >
+          <span className="text-xs font-mono text-primary">Ansible</span>
+        </motion.div>
+      </motion.div>
+
+      {/* Terraform Badge */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.55, scale: 1 }}
+        transition={{ duration: 0.8, delay: 2.5 }}
+        className="absolute top-[72%] right-[15%] hidden xl:block animate-float"
+        style={{ animationDelay: '-5s' }}
+      >
+        <motion.div 
+          whileHover={{ scale: 1.1 }}
+          className="px-3 py-1.5 rounded-full bg-card/70 border border-green/30 backdrop-blur-xl"
+        >
+          <span className="text-xs font-mono text-green">Terraform</span>
         </motion.div>
       </motion.div>
 
