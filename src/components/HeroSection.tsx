@@ -1,4 +1,4 @@
-import { ChevronDown, MapPin, GraduationCap, Clock, Shield, Server, Network, Sparkles, Database, HardDrive, Wifi, Lock, Monitor, Container, Activity, Cpu } from "lucide-react";
+import { MapPin, GraduationCap, Clock, Shield, Server, Network, Sparkles, HardDrive, Lock, Monitor, Activity, Settings, Database, Boxes } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedBackground } from "./AnimatedBackground";
 import { DashboardPreview } from "./DashboardPreview";
@@ -149,17 +149,21 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Floating UI cards - Multiple elements */}
-      {/* Server Card - Top Left */}
+      {/* Floating UI cards - Carefully positioned to avoid overlap */}
+      
+      {/* LEFT SIDE - Stacked vertically with proper spacing */}
+      
+      {/* Proxmox VE - Top Left */}
       <motion.div 
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 0.85, x: 0 }}
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 0.9, x: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute top-[20%] left-[3%] hidden xl:block animate-float"
+        className="absolute top-[15%] left-[2%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.05 }}
-          className="p-4 rounded-xl bg-card/80 border border-border/50 backdrop-blur-xl shadow-elevated w-48"
+          whileHover={{ scale: 1.03, y: -2 }}
+          transition={{ duration: 0.2 }}
+          className="p-4 rounded-xl bg-card/80 border border-primary/30 backdrop-blur-xl shadow-lg w-48"
         >
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
@@ -185,46 +189,17 @@ export const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* Homelab Card - Top Right */}
+      {/* Active Directory - Mid-Top Left */}
       <motion.div 
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 0.85, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.3 }}
-        className="absolute top-[18%] right-[3%] hidden xl:block animate-float-reverse"
-      >
-        <motion.div 
-          whileHover={{ scale: 1.05 }}
-          className="p-4 rounded-xl bg-card/80 border border-border/50 backdrop-blur-xl shadow-elevated w-52"
-        >
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-green animate-pulse" />
-              <span className="text-xs text-green font-medium">Actif</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
-              <Network className="w-5 h-5 text-accent" />
-            </div>
-            <div>
-              <p className="text-sm font-medium">Homelab</p>
-              <p className="text-xs text-muted-foreground">5 VMs actives</p>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* Active Directory Card - Middle Left */}
-      <motion.div 
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 0.8, x: 0 }}
         transition={{ duration: 0.8, delay: 1.4 }}
-        className="absolute top-[45%] left-[2%] hidden xl:block animate-float"
-        style={{ animationDelay: '-3s' }}
+        className="absolute top-[32%] left-[3%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.05 }}
-          className="p-3 rounded-xl bg-card/80 border border-accent/30 backdrop-blur-xl shadow-elevated w-44"
+          whileHover={{ scale: 1.03, y: -2 }}
+          transition={{ duration: 0.2 }}
+          className="p-3 rounded-xl bg-card/80 border border-accent/30 backdrop-blur-xl shadow-lg w-44"
         >
           <div className="flex items-center gap-2 mb-2">
             <div className="w-6 h-6 rounded-lg bg-accent/20 flex items-center justify-center">
@@ -232,54 +207,29 @@ export const HeroSection = () => {
             </div>
             <span className="text-xs font-medium text-foreground">Active Directory</span>
           </div>
-          <div className="flex items-center gap-2 text-xs">
+          <div className="flex items-center gap-1.5 text-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
             <span className="text-green">Actif</span>
           </div>
         </motion.div>
       </motion.div>
 
-      {/* pfSense Card - Middle Right */}
+      {/* Grafana - Mid Left */}
       <motion.div 
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 0.8, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
-        className="absolute top-[50%] right-[2%] hidden xl:block animate-float-reverse"
-        style={{ animationDelay: '-1s' }}
-      >
-        <motion.div 
-          whileHover={{ scale: 1.05 }}
-          className="p-3 rounded-xl bg-card/80 border border-green/30 backdrop-blur-xl shadow-elevated w-44"
-        >
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-6 h-6 rounded-lg bg-green/20 flex items-center justify-center">
-              <Network className="w-3 h-3 text-green" />
-            </div>
-            <span className="text-xs font-medium text-foreground">VPN IPsec</span>
-          </div>
-          <div className="flex items-center gap-2 text-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-            <span className="text-green">Actif</span>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* Monitoring Card - Bottom Left */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 0.75, y: 0 }}
         transition={{ duration: 0.8, delay: 1.6 }}
-        className="absolute bottom-[25%] left-[5%] hidden xl:block animate-float"
-        style={{ animationDelay: '-4s' }}
+        className="absolute top-[48%] left-[2%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.05 }}
-          className="p-3 rounded-xl bg-card/80 border border-pink/30 backdrop-blur-xl shadow-elevated w-40"
+          whileHover={{ scale: 1.03, y: -2 }}
+          transition={{ duration: 0.2 }}
+          className="p-3 rounded-xl bg-card/80 border border-pink/30 backdrop-blur-xl shadow-lg w-40"
         >
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-lg bg-pink/20 flex items-center justify-center">
-                <Sparkles className="w-3 h-3 text-pink" />
+                <Activity className="w-3 h-3 text-pink" />
               </div>
               <span className="text-xs font-medium text-foreground">Grafana</span>
             </div>
@@ -295,22 +245,126 @@ export const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* Docker Card - Bottom Right */}
+      {/* Portainer - Lower Left */}
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 0.75, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.7 }}
-        className="absolute bottom-[28%] right-[5%] hidden xl:block animate-float-reverse"
-        style={{ animationDelay: '-2s' }}
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 0.75, x: 0 }}
+        transition={{ duration: 0.8, delay: 1.8 }}
+        className="absolute top-[65%] left-[3%] hidden xl:block"
+      >
+        <motion.div 
+          whileHover={{ scale: 1.03, y: -2 }}
+          transition={{ duration: 0.2 }}
+          className="p-3 rounded-xl bg-card/80 border border-accent/30 backdrop-blur-xl shadow-lg w-36"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-accent/20 flex items-center justify-center">
+              <Monitor className="w-3 h-3 text-accent" />
+            </div>
+            <span className="text-xs font-medium text-foreground">Portainer</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+            <span className="text-green">Actif</span>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Ansible - Bottom Left */}
+      <motion.div 
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 0.7, x: 0 }}
+        transition={{ duration: 0.8, delay: 2.0 }}
+        className="absolute top-[80%] left-[5%] hidden xl:block"
       >
         <motion.div 
           whileHover={{ scale: 1.05 }}
-          className="p-3 rounded-xl bg-card/80 border border-primary/30 backdrop-blur-xl shadow-elevated w-40"
+          transition={{ duration: 0.2 }}
+          className="p-2.5 rounded-xl bg-card/80 border border-primary/30 backdrop-blur-xl shadow-lg"
+        >
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 rounded bg-primary/20 flex items-center justify-center">
+              <Settings className="w-3 h-3 text-primary" />
+            </div>
+            <span className="text-xs font-medium text-foreground">Ansible</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* RIGHT SIDE - Stacked vertically with proper spacing */}
+      
+      {/* Homelab - Top Right */}
+      <motion.div 
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 0.9, x: 0 }}
+        transition={{ duration: 0.8, delay: 1.3 }}
+        className="absolute top-[15%] right-[2%] hidden xl:block"
+      >
+        <motion.div 
+          whileHover={{ scale: 1.03, y: -2 }}
+          transition={{ duration: 0.2 }}
+          className="p-4 rounded-xl bg-card/80 border border-accent/30 backdrop-blur-xl shadow-lg w-48"
+        >
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-green animate-pulse" />
+              <span className="text-xs text-green font-medium">Actif</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
+              <Network className="w-5 h-5 text-accent" />
+            </div>
+            <div>
+              <p className="text-sm font-medium">Homelab</p>
+              <p className="text-xs text-muted-foreground">5 VMs actives</p>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* VPN IPsec - Mid-Top Right */}
+      <motion.div 
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 0.85, x: 0 }}
+        transition={{ duration: 0.8, delay: 1.5 }}
+        className="absolute top-[32%] right-[3%] hidden xl:block"
+      >
+        <motion.div 
+          whileHover={{ scale: 1.03, y: -2 }}
+          transition={{ duration: 0.2 }}
+          className="p-3 rounded-xl bg-card/80 border border-green/30 backdrop-blur-xl shadow-lg w-40"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-green/20 flex items-center justify-center">
+              <Lock className="w-3 h-3 text-green" />
+            </div>
+            <span className="text-xs font-medium text-foreground">VPN IPsec</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+            <span className="text-green">Actif</span>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Docker - Mid Right */}
+      <motion.div 
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 0.8, x: 0 }}
+        transition={{ duration: 0.8, delay: 1.7 }}
+        className="absolute top-[48%] right-[2%] hidden xl:block"
+      >
+        <motion.div 
+          whileHover={{ scale: 1.03, y: -2 }}
+          transition={{ duration: 0.2 }}
+          className="p-3 rounded-xl bg-card/80 border border-primary/30 backdrop-blur-xl shadow-lg w-40"
         >
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Container className="w-3 h-3 text-primary" />
+                <Boxes className="w-3 h-3 text-primary" />
               </div>
               <span className="text-xs font-medium text-foreground">Docker</span>
             </div>
@@ -323,157 +377,90 @@ export const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* Portainer Card - Lower Left */}
+      {/* pfSense - Lower Right */}
       <motion.div 
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 0.7, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.8 }}
-        className="absolute bottom-[15%] left-[8%] hidden xl:block animate-float"
-        style={{ animationDelay: '-5s' }}
-      >
-        <motion.div 
-          whileHover={{ scale: 1.05 }}
-          className="p-3 rounded-xl bg-card/80 border border-accent/30 backdrop-blur-xl shadow-elevated w-36"
-        >
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-6 h-6 rounded-lg bg-accent/20 flex items-center justify-center">
-              <Monitor className="w-3 h-3 text-accent" />
-            </div>
-            <span className="text-xs font-medium text-foreground">Portainer</span>
-          </div>
-          <div className="flex items-center gap-1 text-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-            <span className="text-green">Actif</span>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* pfSense Card - Lower Right */}
-      <motion.div 
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 0.7, x: 0 }}
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 0.75, x: 0 }}
         transition={{ duration: 0.8, delay: 1.9 }}
-        className="absolute bottom-[12%] right-[8%] hidden xl:block animate-float-reverse"
-        style={{ animationDelay: '-3s' }}
+        className="absolute top-[65%] right-[3%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.05 }}
-          className="p-3 rounded-xl bg-card/80 border border-green/30 backdrop-blur-xl shadow-elevated w-36"
+          whileHover={{ scale: 1.03, y: -2 }}
+          transition={{ duration: 0.2 }}
+          className="p-3 rounded-xl bg-card/80 border border-green/30 backdrop-blur-xl shadow-lg w-36"
         >
           <div className="flex items-center gap-2 mb-2">
             <div className="w-6 h-6 rounded-lg bg-green/20 flex items-center justify-center">
-              <Lock className="w-3 h-3 text-green" />
+              <Network className="w-3 h-3 text-green" />
             </div>
             <span className="text-xs font-medium text-foreground">pfSense</span>
           </div>
-          <div className="flex items-center gap-1 text-xs">
+          <div className="flex items-center gap-1.5 text-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
             <span className="text-green">Actif</span>
           </div>
         </motion.div>
       </motion.div>
 
-      {/* Zabbix Monitoring - Top Center Left */}
+      {/* Terraform - Bottom Right */}
       <motion.div 
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 0.65, y: 0 }}
-        transition={{ duration: 0.8, delay: 2.0 }}
-        className="absolute top-[30%] left-[12%] hidden xl:block animate-float-reverse"
-        style={{ animationDelay: '-6s' }}
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 0.7, x: 0 }}
+        transition={{ duration: 0.8, delay: 2.1 }}
+        className="absolute top-[80%] right-[5%] hidden xl:block"
       >
         <motion.div 
           whileHover={{ scale: 1.05 }}
-          className="p-2 rounded-lg bg-card/70 border border-pink/30 backdrop-blur-xl shadow-elevated"
+          transition={{ duration: 0.2 }}
+          className="p-2.5 rounded-xl bg-card/80 border border-green/30 backdrop-blur-xl shadow-lg"
         >
           <div className="flex items-center gap-2">
-            <Activity className="w-4 h-4 text-pink" />
-            <span className="text-xs font-medium text-foreground">Zabbix</span>
+            <div className="w-5 h-5 rounded bg-green/20 flex items-center justify-center">
+              <Database className="w-3 h-3 text-green" />
+            </div>
+            <span className="text-xs font-medium text-foreground">Terraform</span>
             <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
           </div>
         </motion.div>
       </motion.div>
 
-      {/* NGINX Card - Top Center Right */}
+      {/* NGINX - Far left mid-height */}
       <motion.div 
-        initial={{ opacity: 0, y: -30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 0.65, y: 0 }}
-        transition={{ duration: 0.8, delay: 2.1 }}
-        className="absolute top-[32%] right-[12%] hidden xl:block animate-float"
-        style={{ animationDelay: '-4s' }}
+        transition={{ duration: 0.8, delay: 2.2 }}
+        className="absolute top-[55%] left-[12%] hidden 2xl:block"
       >
         <motion.div 
           whileHover={{ scale: 1.05 }}
-          className="p-2 rounded-lg bg-card/70 border border-primary/30 backdrop-blur-xl shadow-elevated"
+          transition={{ duration: 0.2 }}
+          className="p-2 rounded-lg bg-card/70 border border-primary/20 backdrop-blur-xl"
         >
           <div className="flex items-center gap-2">
-            <HardDrive className="w-4 h-4 text-primary" />
+            <HardDrive className="w-3.5 h-3.5 text-primary" />
             <span className="text-xs font-medium text-foreground">NGINX</span>
             <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
           </div>
         </motion.div>
       </motion.div>
 
-      {/* SSH Badge - Floating small */}
+      {/* Zabbix - Far right mid-height */}
       <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.6, scale: 1 }}
-        transition={{ duration: 0.8, delay: 2.2 }}
-        className="absolute top-[60%] left-[6%] hidden xl:block animate-float"
-        style={{ animationDelay: '-7s' }}
-      >
-        <motion.div 
-          whileHover={{ scale: 1.1 }}
-          className="px-3 py-1.5 rounded-full bg-card/70 border border-accent/30 backdrop-blur-xl"
-        >
-          <span className="text-xs font-mono text-accent">SSH</span>
-        </motion.div>
-      </motion.div>
-
-      {/* RAID Badge */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.6, scale: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 0.65, y: 0 }}
         transition={{ duration: 0.8, delay: 2.3 }}
-        className="absolute top-[65%] right-[6%] hidden xl:block animate-float-reverse"
-        style={{ animationDelay: '-2s' }}
+        className="absolute top-[55%] right-[12%] hidden 2xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.1 }}
-          className="px-3 py-1.5 rounded-full bg-card/70 border border-pink/30 backdrop-blur-xl"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+          className="p-2 rounded-lg bg-card/70 border border-pink/20 backdrop-blur-xl"
         >
-          <span className="text-xs font-mono text-pink">RAID</span>
-        </motion.div>
-      </motion.div>
-
-      {/* Ansible Badge */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.55, scale: 1 }}
-        transition={{ duration: 0.8, delay: 2.4 }}
-        className="absolute top-[75%] left-[15%] hidden xl:block animate-float-reverse"
-        style={{ animationDelay: '-8s' }}
-      >
-        <motion.div 
-          whileHover={{ scale: 1.1 }}
-          className="px-3 py-1.5 rounded-full bg-card/70 border border-primary/30 backdrop-blur-xl"
-        >
-          <span className="text-xs font-mono text-primary">Ansible</span>
-        </motion.div>
-      </motion.div>
-
-      {/* Terraform Badge */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.55, scale: 1 }}
-        transition={{ duration: 0.8, delay: 2.5 }}
-        className="absolute top-[72%] right-[15%] hidden xl:block animate-float"
-        style={{ animationDelay: '-5s' }}
-      >
-        <motion.div 
-          whileHover={{ scale: 1.1 }}
-          className="px-3 py-1.5 rounded-full bg-card/70 border border-green/30 backdrop-blur-xl"
-        >
-          <span className="text-xs font-mono text-green">Terraform</span>
+          <div className="flex items-center gap-2">
+            <Activity className="w-3.5 h-3.5 text-pink" />
+            <span className="text-xs font-medium text-foreground">Zabbix</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+          </div>
         </motion.div>
       </motion.div>
 

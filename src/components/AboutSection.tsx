@@ -27,24 +27,11 @@ const traits = [
 export const AboutSection = () => {
   return (
     <section id="about" className="py-24 md:py-32 relative overflow-hidden">
-      {/* Background effects - Enhanced with grid and floating elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent" />
-      <div className="absolute inset-0 bg-grid opacity-20" />
-      <div className="absolute top-1/2 -left-48 w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse-slow" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] animate-pulse-slow" />
-      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-pink/5 rounded-full blur-[80px] animate-float" />
-      
-      {/* Floating decorative elements */}
-      <div className="absolute top-[20%] left-[10%] hidden lg:flex items-center gap-2 px-3 py-2 rounded-lg bg-card/40 border border-border/30 backdrop-blur-sm animate-float opacity-60">
-        <div className="w-2 h-2 rounded-full bg-green animate-pulse" />
-        <span className="text-xs font-mono text-muted-foreground">whoami</span>
-      </div>
-      <div className="absolute bottom-[30%] right-[8%] hidden lg:flex items-center gap-2 px-3 py-2 rounded-lg bg-card/40 border border-primary/20 backdrop-blur-sm animate-float-reverse opacity-60">
-        <span className="text-xs font-mono text-primary">~/about</span>
-      </div>
-      <div className="absolute top-[60%] left-[5%] hidden lg:block px-3 py-2 rounded-lg bg-card/40 border border-accent/20 backdrop-blur-sm animate-float opacity-50" style={{ animationDelay: '-2s' }}>
-        <span className="text-xs font-mono text-accent">16 ans</span>
-      </div>
+      {/* Background effects - Clean and polished */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent" />
+      <div className="absolute inset-0 bg-grid opacity-10" />
+      <div className="absolute top-1/2 -left-48 w-96 h-96 bg-primary/8 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent/8 rounded-full blur-[100px]" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
