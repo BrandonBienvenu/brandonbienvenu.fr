@@ -2,15 +2,15 @@ import { Rocket, GraduationCap, Award, BookOpen, Briefcase, ChevronRight } from 
 
 const milestones = [
   { 
-    year: "2025", 
+    year: "2026/2027", 
     icon: GraduationCap, 
-    title: "Terminer la Première", 
+    title: "Première/Terminale", 
     description: "Obtention du BAC PRO CIEL",
     status: "current" as const,
     color: "primary" as const,
   },
   { 
-    year: "2026", 
+    year: "2027", 
     icon: Award, 
     title: "Certifications", 
     description: "Linux+, CCNA",
@@ -18,7 +18,7 @@ const milestones = [
     color: "accent" as const,
   },
   { 
-    year: "2027", 
+    year: "2028", 
     icon: BookOpen, 
     title: "Études Supérieures", 
     description: "Formation spécialisée en cybersécurité",
