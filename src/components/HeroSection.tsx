@@ -156,12 +156,16 @@ export const HeroSection = () => {
       {/* Proxmox VE - Top Left */}
       <motion.div 
         initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 0.9, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
+        animate={{ opacity: 0.9, x: 0, y: [0, -12, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 1.2,
+          y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0 }
+        }}
         className="absolute top-[15%] left-[2%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.03, y: -2 }}
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.2 }}
           className="p-4 rounded-xl bg-card/80 border border-primary/30 backdrop-blur-xl shadow-lg w-48"
         >
@@ -192,12 +196,16 @@ export const HeroSection = () => {
       {/* Active Directory - Mid-Top Left */}
       <motion.div 
         initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 0.85, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.4 }}
+        animate={{ opacity: 0.85, x: 0, y: [0, -10, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 1.4,
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
+        }}
         className="absolute top-[32%] left-[3%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.03, y: -2 }}
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.2 }}
           className="p-3 rounded-xl bg-card/80 border border-accent/30 backdrop-blur-xl shadow-lg w-44"
         >
@@ -217,12 +225,16 @@ export const HeroSection = () => {
       {/* Grafana - Mid Left */}
       <motion.div 
         initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 0.8, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.6 }}
+        animate={{ opacity: 0.8, x: 0, y: [0, -14, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 1.6,
+          y: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }
+        }}
         className="absolute top-[48%] left-[2%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.03, y: -2 }}
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.2 }}
           className="p-3 rounded-xl bg-card/80 border border-pink/30 backdrop-blur-xl shadow-lg w-40"
         >
@@ -248,12 +260,16 @@ export const HeroSection = () => {
       {/* Portainer - Lower Left */}
       <motion.div 
         initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 0.75, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.8 }}
+        animate={{ opacity: 0.75, x: 0, y: [0, -8, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 1.8,
+          y: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
+        }}
         className="absolute top-[65%] left-[3%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.03, y: -2 }}
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.2 }}
           className="p-3 rounded-xl bg-card/80 border border-accent/30 backdrop-blur-xl shadow-lg w-36"
         >
@@ -273,8 +289,12 @@ export const HeroSection = () => {
       {/* Ansible - Bottom Left */}
       <motion.div 
         initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 0.7, x: 0 }}
-        transition={{ duration: 0.8, delay: 2.0 }}
+        animate={{ opacity: 0.7, x: 0, y: [0, -10, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 2.0,
+          y: { duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 2 }
+        }}
         className="absolute top-[80%] left-[5%] hidden xl:block"
       >
         <motion.div 
@@ -297,12 +317,16 @@ export const HeroSection = () => {
       {/* Homelab - Top Right */}
       <motion.div 
         initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 0.9, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.3 }}
+        animate={{ opacity: 0.9, x: 0, y: [0, -14, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 1.3,
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
+        }}
         className="absolute top-[15%] right-[2%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.03, y: -2 }}
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.2 }}
           className="p-4 rounded-xl bg-card/80 border border-accent/30 backdrop-blur-xl shadow-lg w-48"
         >
@@ -327,12 +351,16 @@ export const HeroSection = () => {
       {/* VPN IPsec - Mid-Top Right */}
       <motion.div 
         initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 0.85, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
+        animate={{ opacity: 0.85, x: 0, y: [0, -12, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 1.5,
+          y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }
+        }}
         className="absolute top-[32%] right-[3%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.03, y: -2 }}
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.2 }}
           className="p-3 rounded-xl bg-card/80 border border-green/30 backdrop-blur-xl shadow-lg w-40"
         >
@@ -352,12 +380,16 @@ export const HeroSection = () => {
       {/* Docker - Mid Right */}
       <motion.div 
         initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 0.8, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.7 }}
+        animate={{ opacity: 0.8, x: 0, y: [0, -10, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 1.7,
+          y: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 }
+        }}
         className="absolute top-[48%] right-[2%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.03, y: -2 }}
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.2 }}
           className="p-3 rounded-xl bg-card/80 border border-primary/30 backdrop-blur-xl shadow-lg w-40"
         >
@@ -380,12 +412,16 @@ export const HeroSection = () => {
       {/* pfSense - Lower Right */}
       <motion.div 
         initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 0.75, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.9 }}
+        animate={{ opacity: 0.75, x: 0, y: [0, -8, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 1.9,
+          y: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.7 }
+        }}
         className="absolute top-[65%] right-[3%] hidden xl:block"
       >
         <motion.div 
-          whileHover={{ scale: 1.03, y: -2 }}
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.2 }}
           className="p-3 rounded-xl bg-card/80 border border-green/30 backdrop-blur-xl shadow-lg w-36"
         >
@@ -405,8 +441,12 @@ export const HeroSection = () => {
       {/* Terraform - Bottom Right */}
       <motion.div 
         initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 0.7, x: 0 }}
-        transition={{ duration: 0.8, delay: 2.1 }}
+        animate={{ opacity: 0.7, x: 0, y: [0, -12, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 2.1,
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.2 }
+        }}
         className="absolute top-[80%] right-[5%] hidden xl:block"
       >
         <motion.div 
@@ -427,8 +467,12 @@ export const HeroSection = () => {
       {/* NGINX - Far left mid-height */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 0.65, y: 0 }}
-        transition={{ duration: 0.8, delay: 2.2 }}
+        animate={{ opacity: 0.65, y: [0, -10, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 2.2,
+          y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }
+        }}
         className="absolute top-[55%] left-[12%] hidden 2xl:block"
       >
         <motion.div 
@@ -447,8 +491,12 @@ export const HeroSection = () => {
       {/* Zabbix - Far right mid-height */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 0.65, y: 0 }}
-        transition={{ duration: 0.8, delay: 2.3 }}
+        animate={{ opacity: 0.65, y: [0, -8, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 2.3,
+          y: { duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 1.4 }
+        }}
         className="absolute top-[55%] right-[12%] hidden 2xl:block"
       >
         <motion.div 
