@@ -1,6 +1,7 @@
-import { Mail, Github, Linkedin, Send, Quote, ArrowRight, Sparkles, MessageSquare } from "lucide-react";
+import { Mail, Send, Quote, ArrowRight, Sparkles, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { InteractiveTerminal } from "./InteractiveTerminal";
+import { SocialLogo3D } from "./SocialLogo3D";
 import { motion } from "framer-motion";
 
 export const ContactSection = () => {
@@ -116,28 +117,10 @@ export const ContactSection = () => {
                 </Button>
               </motion.div>
 
-              {/* Social Links */}
-              <div className="flex items-center justify-center gap-4">
-                <motion.a 
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="https://github.com/BrandonBienvenu" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="group/social p-4 rounded-xl bg-secondary/80 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
-                >
-                  <Github className="h-5 w-5 text-muted-foreground group-hover/social:text-primary transition-colors" />
-                </motion.a>
-                <motion.a 
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="https://www.linkedin.com/in/brandon-bienvenu-045858348/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="group/social p-4 rounded-xl bg-secondary/80 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
-                >
-                  <Linkedin className="h-5 w-5 text-muted-foreground group-hover/social:text-primary transition-colors" />
-                </motion.a>
+              {/* 3D Social Logos */}
+              <div className="flex items-center justify-center gap-6">
+                <SocialLogo3D type="github" url="https://github.com/BrandonBienvenu" />
+                <SocialLogo3D type="linkedin" url="https://www.linkedin.com/in/brandon-bienvenu-045858348/" />
               </div>
             </motion.div>
           </motion.div>
