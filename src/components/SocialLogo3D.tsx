@@ -166,7 +166,7 @@ const LogoMesh = ({ type, onClick }: LogoMeshProps) => {
     document.body.style.cursor = "auto";
   }, []);
 
-  const materialColor = type === "github" ? "#e8e8e8" : "#e8e8e8";
+  const logoColor = type === "github" ? "#ffffff" : "#0A66C2";
 
   return (
     <group
@@ -175,15 +175,21 @@ const LogoMesh = ({ type, onClick }: LogoMeshProps) => {
       onClick={onClick}
     >
       <group ref={groupRef} position={[0, 0.1, 0]}>
-        {/* Main extruded logo */}
+        {/* Main extruded logo - glass-like transparent body */}
         <mesh position={[0, 0, -0.175]} castShadow>
           <extrudeGeometry args={[shape, extrudeSettings]} />
-          <meshStandardMaterial
-            color={hovered ? "#00e5c8" : materialColor}
-            metalness={0.15}
-            roughness={0.6}
-            emissive={hovered ? "#00e5c8" : "#000000"}
-            emissiveIntensity={hovered ? 0.3 : 0}
+          <meshPhysicalMaterial
+            color={logoColor}
+            metalness={0.1}
+            roughness={0.05}
+            transmission={0.6}
+            thickness={0.5}
+            transparent
+            opacity={0.85}
+            emissive="#00e5c8"
+            emissiveIntensity={hovered ? 0.4 : 0.08}
+            clearcoat={1}
+            clearcoatRoughness={0.1}
           />
         </mesh>
 
@@ -193,7 +199,7 @@ const LogoMesh = ({ type, onClick }: LogoMeshProps) => {
           <meshBasicMaterial
             color="#00e5c8"
             transparent
-            opacity={hovered ? 0.18 : 0.06}
+            opacity={hovered ? 0.22 : 0.08}
           />
         </mesh>
       </group>
@@ -213,7 +219,7 @@ export const SocialLogo3D = ({ type, url }: SocialLogo3DProps) => {
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden border border-border/40 bg-black/90 hover:border-primary/50 transition-colors duration-300">
+        <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden border border-primary/20 bg-transparent hover:border-primary/50 transition-colors duration-300">
         {/* Subtle glow behind */}
         <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none" />
 
@@ -222,7 +228,6 @@ export const SocialLogo3D = ({ type, url }: SocialLogo3DProps) => {
           style={{ background: "transparent" }}
           gl={{ alpha: true, antialias: true }}
         >
-          <color attach="background" args={["#0a0a0a"]} />
           <ambientLight intensity={0.4} />
           <directionalLight position={[3, 4, 5]} intensity={0.9} />
           <directionalLight position={[-2, -1, 3]} intensity={0.2} color="#00e5c8" />
