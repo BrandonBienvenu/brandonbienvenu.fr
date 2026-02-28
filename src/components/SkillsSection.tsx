@@ -12,6 +12,9 @@ import dockerLogo from "@/assets/logos/docker.png";
 import elasticsearchLogo from "@/assets/logos/elasticsearch.webp";
 import bashLogo from "@/assets/logos/bash.webp";
 import gitLogo from "@/assets/logos/git.png";
+import virtualboxLogo from "@/assets/logos/virtualbox.webp";
+import nodejsLogo from "@/assets/logos/nodejs.webp";
+import prometheusLogo from "@/assets/logos/prometheus.webp";
 
 const skills = [
   { name: "Ubuntu", src: ubuntuLogo },
@@ -21,9 +24,12 @@ const skills = [
   { name: "Bash", src: bashLogo },
   { name: "SSH", src: sshLogo },
   { name: "Grafana", src: grafanaLogo },
+  { name: "Prometheus", src: prometheusLogo },
   { name: "Lua", src: luaLogo },
   { name: "Active Directory", src: adLogo },
   { name: "Elasticsearch", src: elasticsearchLogo },
+  { name: "VirtualBox", src: virtualboxLogo },
+  { name: "Node.js", src: nodejsLogo },
 ];
 
 const LogoItem = ({ name, src }: { name: string; src: string }) => {
@@ -31,20 +37,23 @@ const LogoItem = ({ name, src }: { name: string; src: string }) => {
 
   return (
     <div
-      className="relative flex-shrink-0 flex items-center justify-center h-16 w-24 md:h-20 md:w-32 cursor-default"
+      className="relative flex-shrink-0 flex items-center justify-center h-14 w-20 md:h-16 md:w-24 cursor-default"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {hovered && (
-        <div className="absolute -top-9 left-1/2 -translate-x-1/2 px-3 py-1 rounded-md bg-card/90 border border-primary/30 text-primary text-xs font-mono whitespace-nowrap z-20 pointer-events-none shadow-lg">
+        <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-card/95 border border-primary/30 text-primary text-[11px] font-mono whitespace-nowrap z-20 pointer-events-none shadow-lg backdrop-blur-sm">
           {name}
         </div>
       )}
       <img
         src={src}
         alt={name}
-        className="max-h-full max-w-full object-contain select-none transition-transform duration-300"
-        style={{ filter: hovered ? "drop-shadow(0 0 8px hsl(var(--primary) / 0.5))" : "none" }}
+        className="max-h-full max-w-full object-contain select-none"
+        style={{
+          filter: hovered ? "drop-shadow(0 0 6px hsl(var(--primary) / 0.5))" : "none",
+          transition: "filter 0.2s ease",
+        }}
         draggable={false}
       />
     </div>
@@ -83,25 +92,23 @@ export const SkillsSection = () => {
         </motion.div>
       </div>
 
-      {/* Conveyor belt */}
       <div
         className="relative"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <div
           className="flex"
           style={{
-            animation: `marquee 35s linear infinite`,
+            animation: "marquee 20s linear infinite",
             animationPlayState: paused ? "paused" : "running",
           }}
         >
           {[0, 1, 2].map((setIndex) => (
-            <div key={setIndex} className="flex shrink-0 items-center gap-10 md:gap-16 px-5 md:px-8">
+            <div key={setIndex} className="flex shrink-0 items-center gap-8 md:gap-14 px-4 md:px-7">
               {skills.map((skill) => (
                 <LogoItem key={`${setIndex}-${skill.name}`} name={skill.name} src={skill.src} />
               ))}
