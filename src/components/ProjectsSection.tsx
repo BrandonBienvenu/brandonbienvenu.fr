@@ -2,6 +2,10 @@ import { Folder, Server, Network, BarChart3, ArrowUpRight, ExternalLink, Monitor
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
+// gif preview for projects - drop the provided looping GIF at this path
+import projectGif from "@/assets/gifs/project.gif";
+import pfsenseDemoGif from "@/assets/gifs/pfsense-demo.gif";
+
 const projects = [
   {
     icon: Server,
@@ -16,17 +20,18 @@ const projects = [
   {
     icon: Network,
     title: "Multi-Site VPN IPsec",
-    description: "Simulation d'une interconnexion de deux sites distants via tunnel VPN IPsec avec pfSense, Windows Server et clients.",
-    tags: ["pfSense", "VPN IPsec", "Windows Server", "Routage"],
+    gif: pfsenseDemoGif,
+    // no description or tags for this one per request
     status: "Terminé",
     statusType: "completed" as const,
+    link: "https://github.com/BrandonBienvenu/ironbridge-ipsec",
     preview: "network",
   },
   {
     icon: BarChart3,
     title: "Stack Monitoring Grafana",
-    description: "Solution de monitoring complète avec Prometheus, Node Exporter et Grafana. Tableaux de bord personnalisés et alerting.",
-    tags: ["Grafana", "Prometheus", "Node Exporter"],
+    gif: projectGif,
+    // no description or tags for this one per request
     status: "Terminé",
     statusType: "completed" as const,
     link: "https://github.com/BrandonBienvenu/-Grafana-Prometheus-and-Node-Exporter-",
@@ -37,7 +42,7 @@ const projects = [
 const PreviewMockup = ({ type }: { type: string }) => {
   if (type === "server") {
     return (
-      <div className="p-4 rounded-xl bg-background/80 border border-border/50 backdrop-blur-sm">
+      <div className="w-full p-4 rounded-xl bg-background/80 border border-border/50 backdrop-blur-sm">
         <div className="flex items-center gap-2 mb-3">
           <div className="flex gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
@@ -149,9 +154,7 @@ export const ProjectsSection = () => {
                 <motion.div 
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
-                  className={`relative rounded-2xl bg-card/80 border backdrop-blur-sm transition-all duration-500 h-full overflow-hidden hover:shadow-elevated ${
-                    project.highlight ? 'border-primary/30' : 'border-border/50 hover:border-primary/30'
-                  }`}
+                  className={`relative rounded-2xl bg-card/80 border ${project.highlight ? 'border-primary/30' : 'border-border/50 hover:border-primary/30'} backdrop-blur-sm transition-all duration-500 h-full overflow-hidden hover:shadow-elevated`}
                 >
                   {/* Gradient top bar for highlighted project */}
                   {project.highlight && (
@@ -159,7 +162,7 @@ export const ProjectsSection = () => {
                   )}
                   
                   <div className="p-6 md:p-8">
-                    <div className={`flex flex-col ${project.highlight ? 'lg:flex-row lg:items-start' : ''} gap-6`}>
+                    <div className={`flex flex-col ${project.highlight ? 'lg:flex-row lg:items-start lg:justify-between' : ''} gap-6`}>
                       {/* Icon */}
                       <motion.div 
                         whileHover={{ scale: 1.1, rotate: 5 }}
@@ -202,29 +205,42 @@ export const ProjectsSection = () => {
                           </span>
                         </div>
                         
-                        {/* Description */}
-                        <p className="text-muted-foreground mb-6 leading-relaxed">
-                          {project.description}
-                        </p>
-                        
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2">
-                          {project.tags.map((tag) => (
-                            <motion.span
-                              key={tag}
-                              whileHover={{ scale: 1.05 }}
-                              className="px-3 py-1.5 text-xs font-mono rounded-lg bg-secondary/80 border border-border text-muted-foreground group-hover:border-primary/20 group-hover:text-foreground/80 transition-all duration-300"
-                            >
-                              {tag}
-                            </motion.span>
-                          ))}
-                        </div>
+                        {/* Gif preview in place of description/tags */}
+                        {project.gif && (
+                          <img
+                            src={project.gif}
+                            alt={`${project.title} preview`}
+                            className="mb-6 w-full rounded"
+                          />
+                        )}
                       </div>
                       
-                      {/* Preview mockup */}
-                      <div className={`shrink-0 ${project.highlight ? 'hidden lg:block w-64' : 'w-full lg:w-48'}`}>
-                        <PreviewMockup type={project.preview} />
-                      </div>
+                      {/* Preview mockup (skip for gifs) */}
+                      {!project.gif && (
+                        <div className={`shrink-0 ${project.highlight ? 'hidden lg:block lg:w-1/2' : 'w-full lg:w-48'}`}>
+                          <PreviewMockup type={project.preview} />
+                        </div>
+                      )}
+
+                      {/* description and tags for non-gif projects */}
+                      {!project.gif && (
+                        <>
+                          <p className="text-muted-foreground mb-6 leading-relaxed">
+                            {project.description}
+                          </p>
+                          <div className="flex flex-wrap gap-2">
+                            {project.tags?.map((tag) => (
+                              <motion.span
+                                key={tag}
+                                whileHover={{ scale: 1.05 }}
+                                className="px-3 py-1.5 text-xs font-mono rounded-lg bg-secondary/80 border border-border text-muted-foreground group-hover:border-primary/20 group-hover:text-foreground/80 transition-all duration-300"
+                              >
+                                {tag}
+                              </motion.span>
+                            ))}
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </motion.div>

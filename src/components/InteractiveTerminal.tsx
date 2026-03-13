@@ -86,7 +86,7 @@ export const InteractiveTerminal = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="w-full max-w-2xl mx-auto"
+      className="w-full max-w-none"
     >
       <div 
         className="rounded-xl bg-card/60 border border-border/50 backdrop-blur-xl overflow-hidden shadow-elevated cursor-text"

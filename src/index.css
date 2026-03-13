@@ -388,8 +388,10 @@
 }
 
 @keyframes marquee {
+  /* move full width of one copy – with two repeated sets the transition
+     back to 0% is invisible, creating a seamless infinite loop */
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-100%); }
 }
 
 @keyframes shimmer {

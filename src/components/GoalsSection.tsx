@@ -67,7 +67,7 @@ export const GoalsSection = () => {
                 <div className="h-full w-1/4 bg-gradient-to-r from-primary to-accent rounded-full" />
               </div>
               
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-4 gap-4 justify-items-center">
                 {milestones.map((milestone, index) => (
                   <div 
                     key={milestone.year} 
@@ -82,7 +82,7 @@ export const GoalsSection = () => {
                     }`} />
                     
                     {/* Card */}
-                    <div className={`group p-6 rounded-2xl bg-card/80 border backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${
+                    <div className={`group p-6 rounded-2xl bg-card/80 border backdrop-blur-sm text-center transition-all duration-300 hover:-translate-y-1 ${
                       milestone.status === 'current' 
                         ? 'border-primary/40 shadow-glow-sm' 
                         : 'border-border/50 hover:border-primary/30'
@@ -132,7 +132,7 @@ export const GoalsSection = () => {
               {milestones.map((milestone, index) => (
                 <div 
                   key={milestone.year}
-                  className="relative flex gap-4 animate-fade-in-up"
+                  className="relative flex items-center gap-4 animate-fade-in-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {/* Line and node */}
@@ -148,7 +148,7 @@ export const GoalsSection = () => {
                   </div>
                   
                   {/* Card */}
-                  <div className={`flex-1 p-5 rounded-xl bg-card/80 border ${
+                  <div className={`flex-1 p-5 rounded-xl bg-card/80 border text-center ${
                     milestone.status === 'current' ? 'border-primary/40' : 'border-border/50'
                   }`}>
                     <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold mb-2 ${

@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 
 import ubuntuLogo from "@/assets/logos/ubuntu.webp";
 import linuxLogo from "@/assets/logos/linux.webp";
-import grafanaLogo from "@/assets/logos/grafana.webp";
+import grafanaLogo from "@/assets/logos/grafana-new.webp"; // use real webp instead of empty png
 import luaLogo from "@/assets/logos/lua.webp";
-import sshLogo from "@/assets/logos/ssh.webp";
+import puttyLogo from "@/assets/logos/putty-real.webp"; // actual PuTTY asset
+import powershellLogo from "@/assets/logos/335911.webp"; // actual PowerShell logo file
+import ciscoLogo from "@/assets/logos/cisco-real.webp"; // actual Cisco asset
 import adLogo from "@/assets/logos/active-directory.webp";
 import dockerLogo from "@/assets/logos/docker.png";
 import elasticsearchLogo from "@/assets/logos/elasticsearch.webp";
@@ -15,6 +17,9 @@ import gitLogo from "@/assets/logos/git.png";
 import virtualboxLogo from "@/assets/logos/virtualbox.webp";
 import nodejsLogo from "@/assets/logos/nodejs.webp";
 import prometheusLogo from "@/assets/logos/prometheus.webp";
+import teratermLogo from "@/assets/logos/tera-term-screenshot.png";
+import proxmoxLogo from "@/assets/logos/573-5731000_proxmox-proxmox-logo-hd-png-download.png";
+import portainerLogo from "@/assets/logos/portainer-original.png";
 
 const skills = [
   { name: "Ubuntu", src: ubuntuLogo },
@@ -22,7 +27,7 @@ const skills = [
   { name: "Docker", src: dockerLogo },
   { name: "Git", src: gitLogo },
   { name: "Bash", src: bashLogo },
-  { name: "SSH", src: sshLogo },
+  { name: "PuTTY", src: puttyLogo },
   { name: "Grafana", src: grafanaLogo },
   { name: "Prometheus", src: prometheusLogo },
   { name: "Lua", src: luaLogo },
@@ -30,6 +35,11 @@ const skills = [
   { name: "Elasticsearch", src: elasticsearchLogo },
   { name: "VirtualBox", src: virtualboxLogo },
   { name: "Node.js", src: nodejsLogo },
+  { name: "PowerShell", src: powershellLogo },
+  { name: "Cisco", src: ciscoLogo },
+  { name: "Tera Term", src: teratermLogo },
+  { name: "Proxmox", src: proxmoxLogo },
+  { name: "Portainer", src: portainerLogo },
 ];
 
 const LogoItem = ({ name, src }: { name: string; src: string }) => {
@@ -49,7 +59,12 @@ const LogoItem = ({ name, src }: { name: string; src: string }) => {
       <img
         src={src}
         alt={name}
-        className="max-h-full max-w-full object-contain select-none"
+        className={"max-h-full max-w-full object-contain select-none " + (name === "Cisco" ? "opacity-50" : "")}
+        onError={(e) => {
+          // if logo fails to load, fall back to transparent pixel
+          e.currentTarget.src =
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==";
+        }}
         style={{
           filter: hovered ? "drop-shadow(0 0 6px hsl(var(--primary) / 0.5))" : "none",
           transition: "filter 0.2s ease",
@@ -103,11 +118,12 @@ export const SkillsSection = () => {
         <div
           className="flex"
           style={{
-            animation: "marquee 20s linear infinite",
+            // conveyor belt speed bumped to 15s per cycle as requested
+            animation: "marquee 15s linear infinite",
             animationPlayState: paused ? "paused" : "running",
           }}
         >
-          {[0, 1, 2].map((setIndex) => (
+          {[0, 1].map((setIndex) => (
             <div key={setIndex} className="flex shrink-0 items-center gap-8 md:gap-14 px-4 md:px-7">
               {skills.map((skill) => (
                 <LogoItem key={`${setIndex}-${skill.name}`} name={skill.name} src={skill.src} />

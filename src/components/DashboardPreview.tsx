@@ -104,7 +104,7 @@ export const DashboardPreview = () => {
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, delay: 0.2 }}
       viewport={{ once: true }}
-      className="relative w-full max-w-4xl mx-auto"
+      className="relative w-full max-w-6xl mx-auto flex justify-center"
     >
       {/* Glow effect */}
       <div className="absolute inset-0 rounded-2xl bg-primary/10 blur-3xl opacity-50" />
@@ -129,7 +129,7 @@ export const DashboardPreview = () => {
         {/* Dashboard content */}
         <div className="p-6">
           {/* Task Manager Style Metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 justify-items-center">
             {metrics.map((metric, index) => {
               const colors = colorClasses[metric.color as keyof typeof colorClasses];
               
@@ -210,7 +210,7 @@ export const DashboardPreview = () => {
           </AnimatePresence>
 
           {/* Server status */}
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4 justify-items-center">
             {servers.map((server, index) => (
               <motion.div
                 key={server.name}
@@ -218,7 +218,7 @@ export const DashboardPreview = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-between p-3 rounded-lg bg-background/50 border border-border/50"
+                className="flex items-center justify-between p-3 rounded-lg bg-background/50 border border-border/50 w-full max-w-md"
               >
                 <div className="flex items-center gap-3">
                   <Server className="h-4 w-4 text-muted-foreground" />

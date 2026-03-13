@@ -14,7 +14,7 @@ const AnimatedGradientName = () => {
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Animated particle background */}
       <AnimatedBackground />
 
@@ -79,7 +79,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-12"
+            className="flex flex-wrap items-center justify-center md:justify-between gap-x-6 gap-y-3 mb-12"
           >
             {["+300h de pratique", "Homelab personnel", "Sécurité-first"].map((item, index) => (
               <motion.div 
@@ -143,6 +143,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
+            className="flex justify-center"
           >
             <DashboardPreview />
           </motion.div>
